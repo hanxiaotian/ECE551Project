@@ -6,7 +6,7 @@ int max(int num1, int num2){
 }
 
 int isinrange(int x, int rangel, int ranger){
-  if((x>=rangel)&&(x<=ranger))
+  if((x>=rangel)&&(x<ranger))
      return 1;
   else return 0;
 }
