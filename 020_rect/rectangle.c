@@ -44,7 +44,7 @@ rectangle intersection(rectangle r1, rectangle r2) {
   r.y=max(r1.y,r2.y);
   int maxx=min(r1.x+r1.width,r2.x+r2.width);
   int maxy=min(r1.y+r1.height,r2.y+r2.height);
-  if (maxx<=r.x||maxy<=r.y){
+  if (maxx<=r.x&&maxy<=r.y){
     r.width=0;
     r.height=0;
   }
