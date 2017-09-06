@@ -1,3 +1,11 @@
+ a a aa a a
+aa  a aaaaa
+
+aa aabbi
+aa aaabb
+i a
+i i
+Aaaaa Bbbbb
 asdiii cvbiii
     i aaaa
 0     12345
@@ -56,8 +64,6 @@ iopjk lkjio
 kjgib ioppdd
       oooooo
   o  oasjmea
-aaaaa aaaaa
-aaaaa aaaad
 aaaaa jiehd
 aaaaa odmaa
 fesfe ppppa
