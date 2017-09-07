@@ -1,0 +1,86 @@
+Grading at 09/07/2017:12:30:35.184511
+For commit ID 10388c0119d1acb104f138dcde43070a388db063
+**Testing broken implementation 10 **
+-------------------------------------
+
+x:1,y:2,wrong_answer:1,right_answer:1
+x:-1,y:2,wrong_answer:-1,right_answer:1
+
+**Testing broken implementation 11 **
+-------------------------------------
+
+x:1,y:2,wrong_answer:1,right_answer:1
+x:-1,y:2,wrong_answer:49,right_answer:1
+
+**Testing broken implementation 1 **
+-------------------------------------
+
+x:1,y:2,wrong_answer:1,right_answer:1
+x:-1,y:2,wrong_answer:-1,right_answer:1
+
+**Testing broken implementation 2 **
+-------------------------------------
+
+x:1,y:2,wrong_answer:2,right_answer:1
+
+**Testing broken implementation 3 **
+-------------------------------------
+
+x:1,y:2,wrong_answer:1,right_answer:1
+x:-1,y:2,wrong_answer:1,right_answer:1
+x:97,y:2,wrong_answer:9409,right_answer:9409
+x:0,y:0,wrong_answer:0,right_answer:1
+
+**Testing broken implementation 4 **
+-------------------------------------
+
+x:1,y:2,wrong_answer:1,right_answer:1
+x:-1,y:2,wrong_answer:1,right_answer:1
+x:97,y:2,wrong_answer:9409,right_answer:9409
+x:0,y:0,wrong_answer:1,right_answer:1
+x:1,y:0,wrong_answer:1,right_answer:1
+x:1,y:0,wrong_answer:1,right_answer:1
+x:0,y:0,wrong_answer:1,right_answer:1
+x:614327182,y:2,wrong_answer:8900,right_answer:-697228604
+
+**Testing broken implementation 5 **
+-------------------------------------
+
+x:1,y:2,wrong_answer:0,right_answer:1
+
+**Testing broken implementation 6 **
+-------------------------------------
+
+x:1,y:2,wrong_answer:4,right_answer:1
+
+**Testing broken implementation 7 **
+-------------------------------------
+
+x:1,y:2,wrong_answer:9,right_answer:1
+
+**Testing broken implementation 8 **
+-------------------------------------
+
+x:1,y:2,wrong_answer:2,right_answer:1
+
+**Testing broken implementation 9 **
+-------------------------------------
+
+x:1,y:2,wrong_answer:0,right_answer:1
+
+**Testing correct implementation **
+-------------------------------------
+
+x:1,y:2,wrong_answer:1,right_answer:1
+x:-1,y:2,wrong_answer:1,right_answer:1
+x:97,y:2,wrong_answer:9409,right_answer:9409
+x:0,y:0,wrong_answer:1,right_answer:1
+x:1,y:0,wrong_answer:1,right_answer:1
+x:1,y:0,wrong_answer:1,right_answer:1
+x:0,y:0,wrong_answer:1,right_answer:1
+x:614327182,y:2,wrong_answer:-697228604,right_answer:-697228604
+
+All tests were ok.
+
+
+Overall Grade: PASSED
