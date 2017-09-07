@@ -1,0 +1,11 @@
+Grading at 09/07/2017:21:10:52.194769
+For commit ID 9d7843a9d85518a664bef4e7f40ad0251a2dbb1a
+Attempting to compile test.c
+gcc -std=gnu99 -pedantic -Wall -c test.c
+gcc -o test test.o
+compiled
+Line_1_did_not_match
+Your file did not match the expected ouput
+Your output did not match what we expected.
+
+Overall Grade: FAILED
