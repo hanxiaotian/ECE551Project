@@ -1,0 +1,109 @@
+Grading at 09/10/2017:13:44:00.437448
+For commit ID b9a832c868501c6b12408532d9bbc85076e79129
+**Testing broken implementation 10 **
+-------------------------------------
+
+test_answer:4,right_answer:4
+test_answer:1,right_answer:1
+test_answer:1,right_answer:1
+test_answer:3,right_answer:3
+test_answer:3,right_answer:3
+test_answer:4,right_answer:4
+test_answer:0,right_answer:0
+test_answer:4,right_answer:4
+test_answer:1,right_answer:1
+test_answer:1,right_answer:1
+wrong_answer:3,right_answer:2
+
+**Testing broken implementation 11 **
+-------------------------------------
+
+test_answer:4,right_answer:4
+wrong_answer:2,right_answer:1
+
+**Testing broken implementation 1 **
+-------------------------------------
+
+test_answer:4,right_answer:4
+test_answer:1,right_answer:1
+test_answer:1,right_answer:1
+test_answer:3,right_answer:3
+wrong_answer:6,right_answer:3
+
+**Testing broken implementation 2 **
+-------------------------------------
+
+test_answer:4,right_answer:4
+test_answer:1,right_answer:1
+test_answer:1,right_answer:1
+test_answer:3,right_answer:3
+test_answer:3,right_answer:3
+wrong_answer:3,right_answer:4
+
+**Testing broken implementation 3 **
+-------------------------------------
+
+test_answer:4,right_answer:4
+test_answer:1,right_answer:1
+wrong_answer:2,right_answer:1
+
+**Testing broken implementation 4 **
+-------------------------------------
+
+test_answer:4,right_answer:4
+test_answer:1,right_answer:1
+test_answer:1,right_answer:1
+test_answer:3,right_answer:3
+test_answer:3,right_answer:3
+test_answer:4,right_answer:4
+wrong_answer:1,right_answer:0
+
+**Testing broken implementation 5 **
+-------------------------------------
+
+wrong_answer:5,right_answer:4
+
+**Testing broken implementation 6 **
+-------------------------------------
+
+test_answer:4,right_answer:4
+wrong_answer:0,right_answer:1
+
+**Testing broken implementation 7 **
+-------------------------------------
+
+wrong_answer:18446744073709551615,right_answer:4
+
+**Testing broken implementation 8 **
+-------------------------------------
+
+wrong_answer:1,right_answer:4
+
+**Testing broken implementation 9 **
+-------------------------------------
+
+test_answer:4,right_answer:4
+test_answer:1,right_answer:1
+test_answer:1,right_answer:1
+test_answer:3,right_answer:3
+test_answer:3,right_answer:3
+wrong_answer:3,right_answer:4
+
+**Testing correct implementation **
+-------------------------------------
+
+test_answer:4,right_answer:4
+test_answer:1,right_answer:1
+test_answer:1,right_answer:1
+test_answer:3,right_answer:3
+test_answer:3,right_answer:3
+test_answer:4,right_answer:4
+test_answer:0,right_answer:0
+test_answer:4,right_answer:4
+test_answer:1,right_answer:1
+test_answer:1,right_answer:1
+test_answer:2,right_answer:2
+
+All test programs were handled correctly
+
+Overall Grade: PASSED
