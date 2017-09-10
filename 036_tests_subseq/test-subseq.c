@@ -3,36 +3,6 @@
 
 size_t  maxSeq(int * array, size_t n);
 
-size_t ImaxSeq(int * array, size_t n){
-  int size=0;
-  int count=0;
-  if(n==0) return size;
-  else{
-    for(int i=0;i<n;i++){
-      count=1;
-      int j=i+1;
-      while(j<n){
-	if(array[j]>array[j-1]){
-	  count++;
-	  j++;
-	}
-	else break;
-      }
-      if(count>size) size=count;
-    }
-  }
-  return size;
-}
-
-void run_helper(int * array, size_t n){
-  if(maxSeq(array,n)!=ImaxSeq(array,n)){
-    printf("wrong_answer:%lu,right_answer:%lu\n",maxSeq(array,n),ImaxSeq(array,n));
-    exit(EXIT_FAILURE);
-  }
-  printf("test_answer:%lu,right_answer:%lu\n",maxSeq(array,n),ImaxSeq(array,n)\
-	 );
-}
-
 void run_helper2(int * array, size_t n, size_t ans){
   if(maxSeq(array,n)!=ans){
     printf("wrong_answer:%lu,right_answer:%lu\n",maxSeq(array,n),ans);
