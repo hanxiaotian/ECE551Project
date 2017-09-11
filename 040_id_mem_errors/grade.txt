@@ -1,8 +1,6 @@
-Grading at 09/11/2017:03:48:25.143411
-For commit ID d6023c190c9511ce36cc1d72086e3ae20a2e0582
-Line_1_did_not_match
-Line_6_did_not_match
-Your file did not match the expected ouput
-Your output did not match what we expected.
+Grading at 09/11/2017:04:00:26.491986
+For commit ID f3ea5637ab35cbb9c172e4b4c4c23ae1bf2a9f4a
+Your file matched the expected output
+Your output matched what we expected
 
-Overall Grade: F
+Overall Grade: A
