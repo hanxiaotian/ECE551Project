@@ -1,21 +1,11 @@
-Grading at 09/11/2017:13:10:01.614793
-For commit ID 11aa946c8526037c5d2c3f3c20f900fabce6a54d
+Grading at 09/11/2017:14:55:43.205396
+For commit ID a1dda6d297d6c0c2ad47cd69af9992abfa37989e
 Attempting to compile  reverse.c
-Your file matched the expected output
-Your output matched what we expected
-Removing your main() and replacing it with our own to run more tests...
-#################################################
-testcase2:
- - Your program segfaulted.
-your code failed the testcase
-#################################################
-testcase3:
-Your file matched the expected output
-#################################################
-testcase4:
-Your file matched the expected output
-#################################################
-testcase5:
-Your file matched the expected output
+reverse.c: In function ‘reverse’:
+reverse.c:7:24: error: ‘return’ with a value, in function returning void [-Werror]
+   if(str==NULL) return 0;
+                        ^
+cc1: all warnings being treated as errors
+The code did not compile!
 
-Overall Grade: C
+Overall Grade: F
