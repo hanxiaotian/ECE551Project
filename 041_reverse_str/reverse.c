@@ -4,6 +4,18 @@
 
 void reverse(char * str) {
   //WRITE ME!
+  char *head=str;
+  char *tail=str;
+  while(*tail!='\0') tail++;
+  char temp;
+  tail--;
+  while(head<tail){
+    temp=*head;
+    *head=*tail;
+    *tail=temp;
+    head++;
+    tail--;
+  }
 }
 
 int main(void) {
