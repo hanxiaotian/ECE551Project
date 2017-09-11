@@ -4,20 +4,21 @@
 
 void reverse(char * str) {
   //WRITE ME!
-  if(str==NULL) return 0;
-  char *head=str;
-  char *tail=str;
-  while(*tail!='\0'){
-    tail++;
-  }
-  char temp;
-  tail--;
-  while(head<tail){
-    temp=*head;
-    *head=*tail;
-    *tail=temp;
-    head++;
+  if(str!=NULL){
+    char *head=str;
+    char *tail=str;
+    while(*tail!='\0'){
+      tail++;
+    }
+    char temp;
     tail--;
+    while(head<tail){
+      temp=*head;
+      *head=*tail;
+      *tail=temp;
+      head++;
+      tail--;
+    }
   }
 }
 
