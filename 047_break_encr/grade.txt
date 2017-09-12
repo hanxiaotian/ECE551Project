@@ -1,17 +1,17 @@
-Grading at 09/12/2017:03:43:24.793589
-For commit ID f41d0510d655bbd86156b23020a57be2b97e501d
+Grading at 09/12/2017:12:10:51.576083
+For commit ID 370e2f8982ca91bde747df0bc80d5f10a963cb8f
 Attempting to compile breaker.c 
 gcc -std=gnu99 -pedantic -Wall -c breaker.c
 gcc -o breaker breaker.o
 testcase1 passed
 #################################################
 testcase2:
-testcase2 passed
+testcase2 failed
 #################################################
 testcase3:
 testcase3 failed
 #################################################
 testcase4:
-testcase4 passed
+testcase4 failed
 
-Overall Grade: C
+Overall Grade: F
