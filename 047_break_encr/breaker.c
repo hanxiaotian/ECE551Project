@@ -32,6 +32,7 @@ void decrypt(FILE * f){
   int alphabet[26]={0};
   frequencycount(f,alphabet);
   int shifting=arrayMax(alphabet,26)+'a'-'e';
+  if(shifting<0) shifting=shifting+26;
   printf("%d\n",shifting);
   
 }
