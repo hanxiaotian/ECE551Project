@@ -3,19 +3,32 @@
 #include <ctype.h>
 
 int  arrayMax(int * array, int n) {
-  int flag=0;
-  int max;
+  int flag1=0;
+  int max1;
   if(n==0)
     return 0;
   else{
-    max=array[0];
+    max1=array[0];
     for(int i=0;i<n;i++){
-      if(array[i]>max){
-	max=array[i];
-	flag=i;
+      if(array[i]>max1){
+	max1=array[i];
+	flag1=i;
       }
     }
-    return flag;
+  }
+  int flag2=0;
+  int max2;
+  max2=array[n-1];
+  for(int i=n-1;i>=0;i--){
+    if(array[i]>max1){
+      max2=array[i];
+      flag2=i;
+    }
+  }
+  if(flag1==flag2) return flag1;
+  else {
+    fprintf(stderr,"Cannot break\n");
+    return EXIT_FAILURE;
   }
 }
 
