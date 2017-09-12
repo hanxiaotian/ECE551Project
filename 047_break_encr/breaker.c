@@ -5,31 +5,17 @@
 int  arrayMax(int * array, int n) {
   int flag1=0;
   int max1;
-  if(n==0)
-    return 0;
-  else{
-    max1=array[0];
-    for(int i=0;i<n;i++){
-      if(array[i]>max1){
-	max1=array[i];
-	flag1=i;
-      }
-    }
-  }
-  int flag2=0;
-  int max2;
-  max2=array[n-1];
-  for(int i=n-1;i>=0;i--){
+  max1=array[0];
+  for(int i=0;i<n;i++){
     if(array[i]>max1){
-      max2=array[i];
-      flag2=i;
+      max1=array[i];
+      flag1=i;
     }
   }
-  if(flag1==flag2) return flag1;
-  else {
-    fprintf(stderr,"Cannot break\n");
-    return EXIT_FAILURE;
+  for(int i=0;i<n;i++){
+    if(array[i]==max1&&i!=flag1) return EXIT_FAILURE;
   }
+    return flag1;
 }
 
 void frequencycount(FILE *f,int alphabet[]){
