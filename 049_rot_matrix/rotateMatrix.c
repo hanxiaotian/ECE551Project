@@ -4,7 +4,7 @@
 #include <string.h>
 
 int readfile(FILE *f,char mat[][10]){
-  char vector[10];
+  char vector[11];
   for(int i=0;i<10;i++){
     fread(vector,sizeof(char),11,f);
     if(strchr(vector,'\n')!=&vector[10]){
