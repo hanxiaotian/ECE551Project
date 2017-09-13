@@ -4,7 +4,7 @@
 #include <string.h>
 
 int readfile(FILE *f,char mat[][10]){
-  char vector[11];
+  char vector[11]={0};
   int num=0;
   for(int i=0;i<10;i++){
     num=0;
@@ -25,7 +25,7 @@ int readfile(FILE *f,char mat[][10]){
 }
 
 int rotate(char mat[][10]){
-  char temp[10][10];
+  char temp[10][10]={0};
   for(int i=0;i<10;i++){
     for(int j=0;j<10;j++){
       temp[j][9-i]=mat[i][j];
@@ -59,7 +59,7 @@ int main(int argc, char ** argv) {
     perror("Could not open file");
     return EXIT_FAILURE;
   }
-  char mat[10][10];
+  char mat[10][10]={0};
   readfile(f,mat);
   rotate(mat);
   printmat(mat);
