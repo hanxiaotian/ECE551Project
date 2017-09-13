@@ -5,8 +5,13 @@
 
 int readfile(FILE *f,char mat[][10]){
   char vector[11];
+  int num=0;
   for(int i=0;i<10;i++){
-    fread(vector,sizeof(char),11,f);
+    num=fread(vector,sizeof(char),11,f);
+    if(num!=11){
+      fprintf(stderr,"invalid input\n");
+      return EXIT_FAILURE;
+    }
     if(strchr(vector,'\n')!=&vector[10]){
       fprintf(stderr,"invalid input\n");
       return EXIT_FAILURE;
