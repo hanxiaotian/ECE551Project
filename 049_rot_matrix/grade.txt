@@ -1,5 +1,5 @@
-Grading at 09/13/2017:02:27:31.504412
-For commit ID 8b38feca21b980883800d46296ef8f53b21b3a50
+Grading at 09/13/2017:02:54:56.845360
+For commit ID bb02d1100369c327f5ed1094eca6320661e7ddda
 Attempting to compile rotateMatrix.c
 testcase1 passed
 #################################################
@@ -7,10 +7,10 @@ testcase2:
 testcase2 passed
 #################################################
 testcase3:
-testcase3 failed, your program didn't indicate this is a failure case
+testcase3 passed
 #################################################
 testcase4:
-testcase4 failed, your program didn't indicate this is a failure case
+testcase4 passed
 #################################################
 testcase5:
 testcase5 failed, your program didn't indicate this is a failure case
@@ -19,4 +19,4 @@ testcase6:
 Your file matched the expected output
 testcase6 passed
 
-Overall Grade: F
+Overall Grade: B
