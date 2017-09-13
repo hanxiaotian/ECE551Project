@@ -11,11 +11,11 @@ int readfile(FILE *f,char mat[][10]){
     num=fread(vector,sizeof(char),11,f);
     if(num!=11){
       fprintf(stderr,"invalid input\n");
-      return EXIT_FAILURE;
+      exit(EXIT_FAILURE);
     }
     if(strchr(vector,'\n')!=&vector[10]){
       fprintf(stderr,"invalid input\n");
-      return EXIT_FAILURE;
+      exit(EXIT_FAILURE);
     }
     for(int j=0;j<10;j++){
       mat[i][j]=vector[j];
