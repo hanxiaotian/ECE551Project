@@ -1,5 +1,5 @@
-Grading at 09/13/2017:02:18:10.860520
-For commit ID 3032ae87eb14738069a0508cc3c30630160b1c67
+Grading at 09/13/2017:02:27:31.504412
+For commit ID 8b38feca21b980883800d46296ef8f53b21b3a50
 Attempting to compile rotateMatrix.c
 testcase1 passed
 #################################################
@@ -7,10 +7,10 @@ testcase2:
 testcase2 passed
 #################################################
 testcase3:
-valgrind reported memory errors
+testcase3 failed, your program didn't indicate this is a failure case
 #################################################
 testcase4:
-valgrind reported memory errors
+testcase4 failed, your program didn't indicate this is a failure case
 #################################################
 testcase5:
 testcase5 failed, your program didn't indicate this is a failure case
