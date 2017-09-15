@@ -6,7 +6,7 @@ void sortData(char ** data, size_t count);
 
 int printData(char ** buffer,size_t size){
   for(int i=0;i<size;i++){
-    printf("%s/n",buffer[i]);
+    printf("%s",buffer[i]);
   }
   return EXIT_SUCCESS;
 }
@@ -20,17 +20,15 @@ int freeData(char ** buffer,size_t size){
 }
 
 int screenread(){
-  char ** buffer=malloc(sizeof(*buffer));
-  size_t bufsize=1;
-  int i=0;
+  char ** buffer=NULL;
+  size_t bufsize=0;
   size_t stringlength=0;
-  while(getline(&(buffer[i]),&stringlength,stdin)==-1){
-    i++;
-    if(bufsize==i){
-      buffer=realloc(buffer,(bufsize+1)*sizeof(*buffer));
-      bufsize++;
-    }
+  while(!feof(stdin)){
+    buffer=realloc(buffer,(bufsize+1)*sizeof(*buffer));
+    bufsize++;
+    getline(&buffer[bufsize],&stringlength,stdin);
   }
+  printf("\n");
   sortData(buffer,bufsize);
   printData(buffer,bufsize);
   freeData(buffer,bufsize);
@@ -38,18 +36,15 @@ int screenread(){
 }
 
 int fileread(FILE *f){
-  char ** buffer=malloc(sizeof(*buffer));
-  size_t bufsize=1;
-  int i=0;
+  char ** buffer=NULL;
+  size_t bufsize=0;
   size_t stringlength=0;
   while(!feof(f)){
-    if(bufsize==i){
-      buffer=realloc(buffer,(bufsize+1)*sizeof(*buffer));
-      bufsize++;
-    }
-    if(getline(&(buffer[i]),&stringlength,f)==-1) exit(EXIT_FAILURE);
-    i++;
+    buffer=realloc(buffer,(bufsize+1)*sizeof(*buffer));
+    bufsize++;
+    getline(&buffer[bufsize],&stringlength,f);
   }
+  printf("\n");
   sortData(buffer,bufsize);
   printData(buffer,bufsize);
   freeData(buffer,bufsize);
