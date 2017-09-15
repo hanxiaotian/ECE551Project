@@ -28,7 +28,8 @@ int screenread(){
     bufsize++;
     getline(&buffer[bufsize-1],&stringlength,stdin);
   }
-  printf("\n");
+  free(buffer[bufsize-1]);
+  bufsize--;
   sortData(buffer,bufsize);
   printData(buffer,bufsize);
   freeData(buffer,bufsize);
@@ -44,7 +45,8 @@ int fileread(FILE *f){
     bufsize++;
     getline(&buffer[bufsize-1],&stringlength,f);
   }
-  printf("\n");
+  free(buffer[bufsize-1]);
+  bufsize--;
   sortData(buffer,bufsize);
   printData(buffer,bufsize);
   freeData(buffer,bufsize);
