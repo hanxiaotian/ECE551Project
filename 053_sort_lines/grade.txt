@@ -1,0 +1,17 @@
+Grading at 09/15/2017:01:51:56.595509
+For commit ID 12c64ccc3c7c2ba9fd025a8f05cfc5060cfe8ce9
+Attempting to compile sortLines.c
+#################################################
+testcase1:
+valgrind reported memory errors
+#################################################
+testcase2:
+Your output is incorrect
+#################################################
+testcase3:
+valgrind reported memory errors
+#################################################
+testcase4:
+valgrind reported memory errors
+
+Overall Grade: F
