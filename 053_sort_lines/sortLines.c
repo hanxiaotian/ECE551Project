@@ -26,7 +26,7 @@ int screenread(){
   while(!feof(stdin)){
     buffer=realloc(buffer,(bufsize+1)*sizeof(*buffer));
     bufsize++;
-    getline(&buffer[bufsize],&stringlength,stdin);
+    getline(&buffer[bufsize-1],&stringlength,stdin);
   }
   printf("\n");
   sortData(buffer,bufsize);
@@ -42,7 +42,7 @@ int fileread(FILE *f){
   while(!feof(f)){
     buffer=realloc(buffer,(bufsize+1)*sizeof(*buffer));
     bufsize++;
-    getline(&buffer[bufsize],&stringlength,f);
+    getline(&buffer[bufsize-1],&stringlength,f);
   }
   printf("\n");
   sortData(buffer,bufsize);
