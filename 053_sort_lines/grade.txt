@@ -1,5 +1,5 @@
-Grading at 09/15/2017:17:31:28.969154
-For commit ID f8123edeebb090ff0ba85d7b1bb0c55729cba193
+Grading at 09/15/2017:23:45:05.357091
+For commit ID c08ba8a6c02919b267841ed9010f574486b4c73c
 Attempting to compile sortLines.c
 #################################################
 testcase1:
