@@ -25,6 +25,7 @@ int screenread(){
   size_t stringlength=0;
   while(!feof(stdin)){
     buffer=realloc(buffer,(bufsize+1)*sizeof(*buffer));
+    memset(&buffer[bufsize],0,sizeof(char*));
     bufsize++;
     getline(&buffer[bufsize-1],&stringlength,stdin);
   }
@@ -42,6 +43,7 @@ int fileread(FILE *f){
   size_t stringlength=0;
   while(!feof(f)){
     buffer=realloc(buffer,(bufsize+1)*sizeof(*buffer));
+    memset(&buffer[bufsize],0,sizeof(char*));
     bufsize++;
     getline(&buffer[bufsize-1],&stringlength,f);
   }
