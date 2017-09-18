@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <limits.h>
+#include <string.h>
 
 #define CLICK_KNOWN_MINE -2
 #define CLICK_INVALID -1
@@ -42,7 +43,17 @@ void addRandomMine(board_t * b) {
 
 board_t * makeBoard(int w, int h, int numMines) {
   //WRITE ME!
-  return NULL;
+  board_t *b=malloc(sizeof(board_t));
+  b->width=w;
+  b->height=h;
+  b->totalMines=numMines;
+  b->board=malloc(h*sizeof(*(b->board)));
+  for(int i=0;i<h;i++){
+    b->board[i]=malloc(w*sizeof(int));
+    memset(b->board[i],UNKNOWN,w*sizeof(int));
+  }
+  addRandomMine(b);
+  return b;
 }
 void printBoard(board_t * b) {    
   int found = 0;
@@ -96,7 +107,20 @@ void printBoard(board_t * b) {
 }
 int countMines(board_t * b, int x, int y) {
   //WRITE ME!
-  return 0;
+  int count=0;
+  if(y>0){
+    if(IS_MINE(b->board[y-1][x])) count++;
+    if(x>0) if(IS_MINE(b->board[y-1][x-1])) count++;
+    if(x<(b->width-1)) if(IS_MINE(b->board[y-1][x+1])) count++;
+  }
+  if(x>0) if(IS_MINE(b->board[y][x-1])) count++;
+  if(x<(b->width-1)) if(IS_MINE(b->board[y][x+1])) count++;
+  if(y<(b->height-1)){
+    if(IS_MINE(b->board[y+1][x])) count++;
+    if(x>0) if(IS_MINE(b->board[y+1][x-1])) count++;
+    if(x<(b->width-1)) if(IS_MINE(b->board[y+1][x+1])) count++;
+  }
+  return count;
 }
 int click (board_t * b, int x, int y) {
   if (x < 0 || x >= b->width ||
@@ -119,11 +143,19 @@ int click (board_t * b, int x, int y) {
 
 int checkWin(board_t * b) {
   //WRITE ME!
-  return 0;
+  for(int i=0;i<b->height;i++)
+    for(int j=0;j<b->width;j++)
+      if(b->board[i][j]==UNKNOWN) return 0;
+  return 1;
 }
 
 void freeBoard(board_t * b) {
   //WRITE ME!
+  for(int i=0;i<b->height;i++){
+    free(b->board[i]);
+  }
+  free(b->board);
+  free(b);
 }
 
 int readInt(char ** linep, size_t * lineszp) {
