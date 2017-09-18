@@ -3,9 +3,9 @@ C
 C
 A
 D
-G
+D
 B
 D
-C
+D
 D
 I
