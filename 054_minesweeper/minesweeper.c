@@ -50,9 +50,12 @@ board_t * makeBoard(int w, int h, int numMines) {
   b->board=malloc(h*sizeof(*(b->board)));
   for(int i=0;i<h;i++){
     b->board[i]=malloc(w*sizeof(int));
-    memset(b->board[i],UNKNOWN,w*sizeof(int));
+    //memset(b->board[i],UNKNOWN,w*sizeof(int));
+    for(int j=0;j<w;j++){
+      b->board[i][j]=UNKNOWN;
+    }
   }
-  addRandomMine(b);
+  for(int i=0;i<numMines;i++) addRandomMine(b);
   return b;
 }
 void printBoard(board_t * b) {    
