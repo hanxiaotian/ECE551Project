@@ -56,7 +56,7 @@ void printCounts(counts_t * c, FILE * outFile) {
     }
     fprintf(outFile,"%s: %d\n",c->item[i]->str,c->item[i]->times);
   }
-  if((flag!=-1)&&(c->item[flag]->times!=0)) fprintf(outFile,"%s: %d\n",c->item[flag]->str,c->item[flag]->times);
+  if((flag!=-1)&&(c->item[flag]->times!=0)) fprintf(outFile,"<unknown> : %d\n",c->item[flag]->times);
 }
 
 void freeCounts(counts_t * c) {
