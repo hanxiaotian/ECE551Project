@@ -30,6 +30,7 @@ counts_t * countFile(const char * filename, kvarray_t * kvPairs) {
     addCount(c,array[i]);
   }
   free(array);
+  fclose(f);
   return c;
 }
 
