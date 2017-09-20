@@ -1,0 +1,139 @@
+Grading at 09/20/2017:19:04:17.570576
+For commit ID 7054c71901cc186140544582f0bb77b9f7af6c51
+Attempting to compile:
+rm -f  outname.o  counts.o  main.o  kv.o count_values *~
+gcc -c -Wall -Werror -std=gnu99 -pedantic -ggdb3 outname.c
+gcc -c -Wall -Werror -std=gnu99 -pedantic -ggdb3 counts.c
+gcc -c -Wall -Werror -std=gnu99 -pedantic -ggdb3 main.c
+gcc -c -Wall -Werror -std=gnu99 -pedantic -ggdb3 kv.c
+gcc -Wall -Werror -std=gnu99 -pedantic -ggdb3 -o count_values  outname.o  counts.o  main.o  kv.o
+#################################################
+testcase1:
+testcase1 passed, your program successfully indicated a failure
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
+#################################################
+testcase2:
+Your file matched the expected output
+Comparing file list1a.txt.counts with answer
+Your output is correct
+Comparing file list1b.txt.counts with answer
+Your file matched the expected output
+Your output is correct
+  - Valgrind showed memory leaks
+valgrind was not clean
+==101556== Memcheck, a memory error detector
+==101556== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==101556== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==101556== 
+==101556== Parent PID: 101555
+==101556== 
+==101556== 
+==101556== HEAP SUMMARY:
+==101556==     in use at exit: 1,104 bytes in 2 blocks
+==101556==   total heap usage: 181 allocs, 179 frees, 27,954 bytes allocated
+==101556== 
+==101556== LEAK SUMMARY:
+==101556==    definitely lost: 0 bytes in 0 blocks
+==101556==    indirectly lost: 0 bytes in 0 blocks
+==101556==      possibly lost: 0 bytes in 0 blocks
+==101556==    still reachable: 1,104 bytes in 2 blocks
+==101556==         suppressed: 0 bytes in 0 blocks
+==101556== Reachable blocks (those to which a pointer was found) are not shown.
+==101556== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==101556== 
+==101556== For counts of detected and suppressed errors, rerun with: -v
+==101556== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+#################################################
+testcase3:
+Your file matched the expected output
+Comparing file list2a.txt.counts with answer
+Your output is correct
+Comparing file list2b.txt.counts with answer
+Your file matched the expected output
+Your output is correct
+Comparing file list2c.txt.counts with answer
+Your file matched the expected output
+Your output is correct
+  - Valgrind showed memory leaks
+valgrind was not clean
+==101608== Memcheck, a memory error detector
+==101608== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==101608== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==101608== 
+==101608== Parent PID: 101607
+==101608== 
+==101608== 
+==101608== HEAP SUMMARY:
+==101608==     in use at exit: 1,656 bytes in 3 blocks
+==101608==   total heap usage: 158 allocs, 155 frees, 35,885 bytes allocated
+==101608== 
+==101608== LEAK SUMMARY:
+==101608==    definitely lost: 0 bytes in 0 blocks
+==101608==    indirectly lost: 0 bytes in 0 blocks
+==101608==      possibly lost: 0 bytes in 0 blocks
+==101608==    still reachable: 1,656 bytes in 3 blocks
+==101608==         suppressed: 0 bytes in 0 blocks
+==101608== Reachable blocks (those to which a pointer was found) are not shown.
+==101608== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==101608== 
+==101608== For counts of detected and suppressed errors, rerun with: -v
+==101608== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+#################################################
+testcase4:
+I expected to find a file called '62list3a.txt.counts' but it did not exist
+(or was not a regular file)
+Here are the files that I can find:
+62list1a.txt
+62list1a.txt.counts
+62list1b.txt
+62list1b.txt.counts
+62list2a.txt
+62list2a.txt.counts
+62list2b.txt
+62list2b.txt.counts
+62list2c.txt
+62list2c.txt.counts
+62list3a.txt
+counts.c
+counts.h
+counts.o
+count_values
+count_values.stderr
+count_values.stdout
+kv.c
+kv.h
+kv.o
+kvs1.txt
+kvs2.txt
+list1a.txt
+list1a.txt.ans
+list1a.txt.counts
+list1b.txt
+list1b.txt.ans
+list1b.txt.counts
+list2a.txt
+list2a.txt.ans
+list2a.txt.counts
+list2b.txt
+list2b.txt.ans
+list2b.txt.counts
+list2c.txt
+list2c.txt.ans
+main.c
+main.o
+Makefile
+ours.txt
+outname.c
+outname.h
+outname.o
+README
+temp.txt
+vg.log
+vg.parse.tmp
+Comparing file list3a.txt.counts with answer
+Your output is correct
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
+
+Overall Grade: B
