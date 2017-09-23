@@ -52,6 +52,13 @@ void printRecounts(state_t * stateData,
 		   uint64_t * voteCounts, 
 		   size_t nStates) {
   //STEP 3: write me
+  double rate=0;
+  for(int i=0;i<nStates;i++){
+    rate=voteCounts[i]*1.0/stateData[i].population;
+    if((rate<0.505)&&(rate>0.495)){
+      printf("%s requires a recount (Candidate A has %.2f%% of the vote)\n",stateData[i].name,rate);
+    }
+  }
 }
 void printLargestWin(state_t * stateData, 
 		     uint64_t * voteCounts, 
