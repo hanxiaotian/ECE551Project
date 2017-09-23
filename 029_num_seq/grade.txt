@@ -1,5 +1,5 @@
-Grading at 09/23/2017:09:19:08.411305
-For commit ID c5080ae27d7d0575c1d48fc51375837e7be0c526
+Grading at 09/23/2017:09:21:05.031306
+For commit ID 6123d5b38d0b21c3000c08701b87727f8c54bc9c
 ****************testing step1.c*********************
 Attempting to compile step1.c
 #################################################
@@ -200,7 +200,7 @@ Attempting to compile step3.c
 #################################################
 Removing your main() and replacing it with our own to test step3(A)
 student.c: In function ‘_old_removed_main_’:
-student.c:33:1: error: control reaches end of non-void function [-Werror=return-type]
+student.c:34:1: error: control reaches end of non-void function [-Werror=return-type]
  }
  ^
 cc1: all warnings being treated as errors
@@ -253,17 +253,17 @@ seq3(99, 99) was Incorrect
 step3(A) grade:0/14
 #################################################
 Removing your seq3 and testing your main...
-You have 1 total test cases
+You have 2 total test cases
   o You have no test cases where x or y is 0 (0/1)
   o You have 1 test cases with x Negative and y Negative (1/1)
   o You have 0 test cases with x Negative and y Positive (0/1)
   o You have 0 test cases with x Positive and y Negative (0/1)
-  o You have 0 test cases with x Positive and y Positive (0/1)
-step3(B) grade:1/5
+  o You have 1 test cases with x Positive and y Positive (1/1)
+step3(B) grade:2/5
 #################################################
 Removing your main() and replacing it with our own to test step3(C)
 student.c: In function ‘_old_removed_main_’:
-student.c:33:1: error: control reaches end of non-void function [-Werror=return-type]
+student.c:34:1: error: control reaches end of non-void function [-Werror=return-type]
  }
  ^
 cc1: all warnings being treated as errors
@@ -356,4 +356,4 @@ You had 1 test cases with non-empty ranges (1/4)
 You had 0 test cases with an empty range (0/1)
 step3(D) grade:1/5
 
-Overall Grade: 7
+Overall Grade: 8
