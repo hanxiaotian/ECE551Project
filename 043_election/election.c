@@ -64,4 +64,15 @@ void printLargestWin(state_t * stateData,
 		     uint64_t * voteCounts, 
 		     size_t nStates) {
   //STEP 4: write me
+  int flag=0;
+  double maxrate=0;
+  double rate=0;
+  for(int i=0;i<nStates;i++){
+    rate=voteCounts[i]*1.0/stateData[i].population;
+    if(rate>maxrate){
+      maxrate=rate;
+      flag=i;
+    }
+  }
+  printf("Candidate A won %s with %.2f%% of the vote\n",stateData[flag].name,100*maxrate);
 }
