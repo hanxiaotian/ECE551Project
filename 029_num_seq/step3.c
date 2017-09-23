@@ -28,7 +28,13 @@ int countEvenInSeq3Range(int xLow, int xHi, int yLow, int yHi){
 
 
 int main(){
-  printf("seq3(%d,%d)=%d\n",-4,-5,seq3(-4,-5));
-  printf("seq3(%d,%d)=%d\n",8,12,seq3(8,12));
+  printf("seq3(%d, %d) = %d\n",-4,-5,seq3(-4,-5));
+  printf("seq3(%d, %d) = %d\n",8,12,seq3(8,12));
+  printf("seq3(%d, %d) = %d\n",-4,5,seq3(-4,5));
+  printf("seq3(%d, %d) = %d\n",4,-5,seq3(4,-5));
+  printf("seq3(%d, %d) = %d\n",0,0,seq3(0,0));
+  printf("countEvenInSeq3Range(%d, %d, %d, %d) = %d\n",0,1,0,2,countEvenInSeq3Range(0,1,0,2));
   printf("countEvenInSeq3Range(%d, %d, %d, %d) = %d\n",0,2,0,3,countEvenInSeq3Range(0,2,0,3));
+  printf("countEvenInSeq3Range(%d, %d, %d, %d) = %d\n",-1,2,-1,3,countEvenInSeq3Range(-1,2,-1,3));
+  printf("countEvenInSeq3Range(%d, %d, %d, %d) = %d\n",-3,-1,-4,-1,countEvenInSeq3Range(-3,-1,-4,-1));
 }

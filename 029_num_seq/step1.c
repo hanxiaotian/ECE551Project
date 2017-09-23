@@ -24,19 +24,23 @@ void printSeq1Range(int low,int high){
   if(low<high){
     for(int i=low;i<high;i++){
       printf("%d",seq1(i));
-      printf(",");
+      if(i!=high-1) printf(",");
     }
   }
   printf("\n");
 }
 
 int main(){
-  printf("seq1(%d)=%d\n",0,seq1(0));
-  printf("seq1(%d)=%d\n",INT_MAX/4,seq1(INT_MAX/4));
-  printf("seq1(%d)=%d\n",(INT_MIN+3)/4,seq1((INT_MIN+3)/4));
-  printf("seq1(%d)=%d\n",-1,seq1(-1));
+  printf("seq1(%d) = %d\n",0,seq1(0));
+  printf("seq1(%d) = %d\n",INT_MAX/4,seq1(INT_MAX/4));
+  printf("seq1(%d) = %d\n",(INT_MIN+3)/4,seq1((INT_MIN+3)/4));
+  printf("seq1(%d) = %d\n",-1,seq1(-1));
   printf("printSeq1Range(%d,%d)\n",-2,6);
   printSeq1Range(-2,6);
   printf("printSeq1Range(%d,%d)\n",7,3);
   printSeq1Range(7,3);
+  printf("printSeq1Range(%d,%d)\n",3,7);
+  printSeq1Range(3,7);
+  printf("printSeq1Range(%d,%d)\n",-2,-1);
+  printSeq1Range(-2,-1);
 }

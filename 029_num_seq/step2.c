@@ -25,7 +25,6 @@ int sumSeq2(int low,int high){
   int sum=0;
   if(low<high){
     for(int i=low;i<high;i++){
-      if(sum>INT_MAX-seq2(i)) exit(EXIT_FAILURE);
       sum+=seq2(i);
     }
   }
@@ -34,10 +33,15 @@ int sumSeq2(int low,int high){
 
 
 int main(){
-  printf("seq2(%d)=%d\n",0,seq2(0));
-  printf("seq2(%d)=%d\n",-1,seq2(-1));
-  printf("sumSeq2(%d,%d)=%d\n",0,2,sumSeq2(0,2));
-  printf("sumSeq2(%d,%d)=%d\n",0,2,sumSeq2(0,2));
-  printf("sumSeq2(%d,%d)=%d\n",3,6,sumSeq2(3,6));
-  printf("sumSeq2(%d,%d)=%d\n",9,7,sumSeq2(9,7));
+  printf("seq2(%d) = %d\n",0,seq2(0));
+  printf("seq2(%d) = %d\n",-1,seq2(-1));
+  printf("seq2(%d) = %d\n",1,seq2(1));
+  printf("seq2(%d) = %d\n",99,seq2(99));
+  printf("seq2(%d) = %d\n",-99,seq2(-99));
+  printf("sumSeq2(%d, %d) = %d\n",0,2,sumSeq2(0,2));
+  printf("sumSeq2(%d, %d) = %d\n",-3,-1,sumSeq2(-3,-1));
+  printf("sumSeq2(%d, %d) = %d\n",3,6,sumSeq2(3,6));
+  printf("sumSeq2(%d, %d) = %d\n",9,7,sumSeq2(9,7));
+  printf("sumSeq2(%d, %d) = %d\n",-2,6,sumSeq2(-2,6));
+  printf("sumSeq2(%d, %d) = %d\n",0,1,sumSeq2(0,1));
 }
