@@ -21,6 +21,11 @@ int readfile(FILE *f,char mat[][10]){
       mat[i][j]=vector[j];
     }
   }
+  fgetc(f);
+  if(!feof(f)){
+    fprintf(stderr,"invalid input\n");
+    exit(EXIT_FAILURE);
+  }
   return 0;
 }
 
