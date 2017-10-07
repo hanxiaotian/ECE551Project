@@ -1,4 +1,4 @@
-Grading at 10/02/2017:09:20:00.793707
+Grading at 10/07/2017:13:51:15.931447
 For commit ID fc4d5c78e1e5e141ca1650b62dffabef4e4ab37c
 election.c exists (good)
 Attempting to compile election.c
@@ -26,8 +26,9 @@ testcase5 passed [10/10]
 #################################################
 testcase6 of step1:
 Difficult corner cases
-Your file matched the expected output
-testcase6 passed [6/6]
+Line_1_did_not_match
+Your file did not match the expected ouput
+testcase6 failed, your output did not match with the answer [0/6]
 #################################################
 testcase1 of step2:
 Your output is correct [8/8]
@@ -40,16 +41,17 @@ Your output is correct [8/8]
 #################################################
 testcase4 of step2:
 Difficult corner cases
-Your output is correct [6/6]
+Your file did not match the expected ouput
+Your output is incorrect [0/6]
 #################################################
 testcase1 of step3:
-Your output is incorrect [0/6]
+Your output had extra lines and/or the wrong percentage [4/6]
 #################################################
 testcase2 of step3:
-Your output is incorrect [0/6]
+Your output had extra lines and/or the wrong percentage [4/6]
 #################################################
 testcase3 of step3:
-Your output is incorrect [0/6]
+Your output had extra lines and/or the wrong percentage [4/6]
 #################################################
 testcase4 of step3:
 Difficult corner cases
@@ -66,6 +68,6 @@ Your output is correct [8/8]
 #################################################
 testcase4 of step4:
 Difficult corner cases
-Your output is correct [6/6]
+Your output is incorrect [0/6]
 
-Overall Grade: 77
+Overall Grade: 71
