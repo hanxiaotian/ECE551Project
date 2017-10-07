@@ -68,7 +68,12 @@ void mystat(char * filename){
   case S_IFSOCK: mode="socket";                  break;
   default:       mode="unknown?";                break;
   }
-  printf("  File: ‘%s’\n",filename);
+  if(S_ISLNK(buf.st_mode)){
+    char linktarget[256]={0};
+    readlink(filename,linktarget,256);
+    printf("  File: ‘%s’ -> ‘%s’\n",filename,linktarget);
+  }
+  else printf("  File: ‘%s’\n",filename);
   printf("  Size: %-10lu\tBlocks: %-10lu IO Block: %-6lu %s\n",buf.st_size,buf.st_blocks,buf.st_blksize,mode);
   if(S_ISCHR(buf.st_mode)||S_ISBLK(buf.st_mode)){
     printf("Device: %lxh/%lud\tInode: %-10lu  Links: %-5lu Device type: %d,%d\n",buf.st_dev,buf.st_dev,buf.st_ino,buf.st_nlink,major(buf.st_rdev),minor(buf.st_rdev));
