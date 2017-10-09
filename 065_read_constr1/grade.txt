@@ -1,0 +1,8 @@
+Grading at 10/09/2017:12:12:14.956466
+For commit ID 92f8cb49342932a5a51b1a6cae022ce6b901f5c3
+Attempting to compile:
+g++ -pedantic -ggdb -Wall -Werror code.cpp -o code 
+Your file matched the expected output
+Your output matched what we expected
+
+Overall Grade: PASSED
