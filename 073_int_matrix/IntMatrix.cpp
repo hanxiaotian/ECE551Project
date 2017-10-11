@@ -5,6 +5,10 @@ IntMatrix::IntMatrix():numRows(0), numColumns(0),rows(NULL){
 IntMatrix::IntMatrix(int r, int c):numRows(r), numColumns(c){
   assert((r>=0)&&(c>=0));
   rows=new IntArray*[r]();
+  if((r==0) && (c==0)){
+    delete[] rows;
+    rows=NULL;
+  }
   for(int i=0;i<r;i++){
     rows[i]=new IntArray(c);
     for(int j=0;j<c;j++){
@@ -16,6 +20,10 @@ IntMatrix::IntMatrix(const IntMatrix & rhs)  {
   numRows=rhs.numRows;
   numColumns=rhs.numColumns;
   rows=new IntArray*[numRows]();
+  if((numRows==0)&&(numColumns==0)){
+    delete[] rows;
+    rows=NULL;
+  }
   for(int i=0;i<numRows;i++){
     rows[i]=new IntArray(numColumns);
     for(int j=0;j<numColumns;j++){
@@ -38,6 +46,10 @@ IntMatrix &IntMatrix::operator=(const IntMatrix & rhs) {
     numRows=rhs.numRows;
     numColumns=rhs.numColumns;
     rows=new IntArray*[numRows]();
+    if((numRows==0)&&(numColumns==0)){
+      delete[] rows;
+      rows=NULL;
+    }
     for(int i=0;i<numRows;i++){
       rows[i]=new IntArray(numColumns);
       for(int j=0;j<numColumns;j++){
@@ -83,6 +95,8 @@ bool IntMatrix::operator==(const IntMatrix & rhs) const {
 IntMatrix IntMatrix::operator+(const IntMatrix & rhs) const {
   assert(numRows==rhs.numRows);
   assert(numColumns==rhs.numColumns);
+  assert(numRows>=0);
+  assert(numColumns>=0);
   IntMatrix result(numRows,numColumns);
   for(int i=0;i<numRows;i++){
     for(int j=0;j<numColumns;j++){
