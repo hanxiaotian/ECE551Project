@@ -5,14 +5,16 @@ IntMatrix::IntMatrix():numRows(0), numColumns(0),rows(NULL){
 IntMatrix::IntMatrix(int r, int c):numRows(r), numColumns(c){
   assert((r>=0)&&(c>=0));
   rows=new IntArray*[r]();
-  if((r==0) && (c==0)){
+  if((r==0) || (c==0)){
     delete[] rows;
     rows=NULL;
   }
-  for(int i=0;i<r;i++){
-    rows[i]=new IntArray(c);
-    for(int j=0;j<c;j++){
-      (*rows[i])[j]=0;
+  else{
+    for(int i=0;i<r;i++){
+      rows[i]=new IntArray(c);
+      for(int j=0;j<c;j++){
+	(*rows[i])[j]=0;
+      }
     }
   }
 }
@@ -20,14 +22,16 @@ IntMatrix::IntMatrix(const IntMatrix & rhs)  {
   numRows=rhs.numRows;
   numColumns=rhs.numColumns;
   rows=new IntArray*[numRows]();
-  if((numRows==0)&&(numColumns==0)){
+  if((numRows==0)||(numColumns==0)){
     delete[] rows;
     rows=NULL;
   }
-  for(int i=0;i<numRows;i++){
-    rows[i]=new IntArray(numColumns);
-    for(int j=0;j<numColumns;j++){
-      (*rows[i])[j]=(*rhs.rows[i])[j];
+  else{
+    for(int i=0;i<numRows;i++){
+      rows[i]=new IntArray(numColumns);
+      for(int j=0;j<numColumns;j++){
+	(*rows[i])[j]=(*rhs.rows[i])[j];
+      }
     }
   }
 }
@@ -46,14 +50,16 @@ IntMatrix &IntMatrix::operator=(const IntMatrix & rhs) {
     numRows=rhs.numRows;
     numColumns=rhs.numColumns;
     rows=new IntArray*[numRows]();
-    if((numRows==0)&&(numColumns==0)){
+    if((numRows==0)||(numColumns==0)){
       delete[] rows;
       rows=NULL;
     }
-    for(int i=0;i<numRows;i++){
-      rows[i]=new IntArray(numColumns);
-      for(int j=0;j<numColumns;j++){
-	(*rows[i])[j]=(*rhs.rows[i])[j];
+    else{
+      for(int i=0;i<numRows;i++){
+	rows[i]=new IntArray(numColumns);
+	for(int j=0;j<numColumns;j++){
+	  (*rows[i])[j]=(*rhs.rows[i])[j];
+	}
       }
     }
   }
@@ -83,7 +89,7 @@ IntArray & IntMatrix::operator[](int index){
 
 
 bool IntMatrix::operator==(const IntMatrix & rhs) const {
-  if(numRows!=rhs.numRows||numColumns!=rhs.numColumns) return false;
+  if((numRows!=rhs.numRows)||(numColumns!=rhs.numColumns)) return false;
   for(int i=0;i<numRows;i++){
     for(int j=0;j<numColumns;j++){
       if((*rows[i])[j]!=(*rhs.rows[i])[j]) return false;
