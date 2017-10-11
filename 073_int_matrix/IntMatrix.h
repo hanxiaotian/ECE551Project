@@ -21,7 +21,7 @@ class IntMatrix {
   IntArray & operator[](int index);
   bool operator==(const IntMatrix & rhs) const;
   IntMatrix operator+(const IntMatrix & rhs) const;
-
+  friend std::ostream & operator<<(std::ostream & s, const IntMatrix & rhs);
 
 };
 
