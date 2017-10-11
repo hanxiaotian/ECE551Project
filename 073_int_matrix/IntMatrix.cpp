@@ -3,6 +3,7 @@
 IntMatrix::IntMatrix():numRows(0), numColumns(0),rows(NULL){
 }
 IntMatrix::IntMatrix(int r, int c):numRows(r), numColumns(c){
+  assert((r>=0)&&(c>=0));
   rows=new IntArray*[r]();
   for(int i=0;i<r;i++){
     rows[i]=new IntArray(c);
