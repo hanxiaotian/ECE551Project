@@ -102,6 +102,7 @@ std::ostream & operator<<(std::ostream & s, const IntMatrix & rhs) {
       s<<(*rhs.rows[i])[rhs.numColumns-1];
       s<<"},\n";
     }
+    s<<"{";
     for(int j=0;j<rhs.numColumns-1;j++){
       s<<(*rhs.rows[rhs.numRows-1])[j]<<", ";
     }
