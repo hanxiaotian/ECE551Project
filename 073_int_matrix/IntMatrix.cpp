@@ -5,7 +5,7 @@ IntMatrix::IntMatrix():numRows(0), numColumns(0),rows(NULL){
 IntMatrix::IntMatrix(int r, int c):numRows(r), numColumns(c){
   assert((r>=0)&&(c>=0));
   rows=new IntArray*[r]();
-  if((r==0) || (c==0)){
+  if((r==0)){
     delete[] rows;
     rows=NULL;
   }
@@ -22,7 +22,7 @@ IntMatrix::IntMatrix(const IntMatrix & rhs)  {
   numRows=rhs.numRows;
   numColumns=rhs.numColumns;
   rows=new IntArray*[numRows]();
-  if((numRows==0)||(numColumns==0)){
+  if(numRows==0){
     delete[] rows;
     rows=NULL;
   }
@@ -36,12 +36,10 @@ IntMatrix::IntMatrix(const IntMatrix & rhs)  {
   }
 }
 IntMatrix::~IntMatrix() {
-  if(numColumns!=0){
-    for(int i=0;i<numRows;i++){
-      delete rows[i];
-    }
-    delete[] rows;
+  for(int i=0;i<numRows;i++){
+    delete rows[i];
   }
+  delete[] rows;
 }
 IntMatrix &IntMatrix::operator=(const IntMatrix & rhs) {
   if(this!=&rhs){
@@ -52,7 +50,7 @@ IntMatrix &IntMatrix::operator=(const IntMatrix & rhs) {
     numRows=rhs.numRows;
     numColumns=rhs.numColumns;
     rows=new IntArray*[numRows]();
-    if((numRows==0)||(numColumns==0)){
+    if(numRows==0){
       delete[] rows;
       rows=NULL;
     }
@@ -120,7 +118,7 @@ IntMatrix IntMatrix::operator+(const IntMatrix & rhs) const {
 
 std::ostream & operator<<(std::ostream & s, const IntMatrix & rhs) {
   s<<"[ ";
-  if(rhs.numRows!=0 && rhs.numColumns!=0){
+  if(rhs.numColumns!=0){
     for(int i=0;i<rhs.numRows-1;i++){
       s<<"{";
       for(int j=0;j<rhs.numColumns-1;j++){
@@ -129,11 +127,23 @@ std::ostream & operator<<(std::ostream & s, const IntMatrix & rhs) {
       s<<(*rhs.rows[i])[rhs.numColumns-1];
       s<<"},\n";
     }
-    s<<"{";
-    for(int j=0;j<rhs.numColumns-1;j++){
-      s<<(*rhs.rows[rhs.numRows-1])[j]<<", ";
+    if(rhs.numRows!=0){
+      s<<"{";
+      for(int j=0;j<rhs.numColumns-1;j++){
+	s<<(*rhs.rows[rhs.numRows-1])[j]<<", ";
+      }
+      s<<(*rhs.rows[rhs.numRows-1])[rhs.numColumns-1]<<"}";
     }
-    s<<(*rhs.rows[rhs.numRows-1])[rhs.numColumns-1]<<"}";
+  }
+  else{
+    for(int i=0;i<rhs.numRows-1;i++){
+      s<<"{";
+      s<<"},\n";
+    }
+    if(rhs.numRows!=0){
+      s<<"{";
+      s<<"}";
+    }
   }
   s<<" ]";
   return s;
