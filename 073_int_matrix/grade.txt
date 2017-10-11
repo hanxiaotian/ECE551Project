@@ -1,5 +1,5 @@
-Grading at 10/11/2017:16:53:52.218205
-For commit ID f65eca84614dd1e807f1ce6496530c5acd1a3058
+Grading at 10/11/2017:19:20:27.109996
+For commit ID c70dec7300f5548555d7c5fa921693b399f4462b
 Attempting to compile:
 rm -f *.o  *~ intMatrixTest
 #################################################
@@ -14,7 +14,7 @@ Your output is correct
 valgrind was clean
 #################################################
 testcase3:
-Your output is incorrect
+valgrind reported memory errors
 #################################################
 testcase4:
 Your output is correct
@@ -22,7 +22,7 @@ Your output is correct
 valgrind was clean
 #################################################
 testcase5:
-Your output is incorrect
+valgrind reported memory errors
 #################################################
 testcase6:
 Your output is correct
@@ -30,7 +30,7 @@ Your output is correct
 valgrind was clean
 #################################################
 testcase7:
-Your output is incorrect
+valgrind reported memory errors
 #################################################
 testcase8:
 Your output is correct
@@ -38,7 +38,7 @@ Your output is correct
 valgrind was clean
 #################################################
 testcase9:
-Your output is incorrect
+valgrind reported memory errors
 #################################################
 testcase10:
 Your output is correct
