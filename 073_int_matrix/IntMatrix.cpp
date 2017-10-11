@@ -3,7 +3,7 @@
 IntMatrix::IntMatrix():numRows(0), numColumns(0),rows(NULL){
 }
 IntMatrix::IntMatrix(int r, int c):numRows(r), numColumns(c){
-  rows=new IntArray*[r];
+  rows=new IntArray*[r]();
   for(int i=0;i<r;i++){
     rows[i]=new IntArray(c);
     for(int j=0;j<c;j++){
@@ -14,7 +14,7 @@ IntMatrix::IntMatrix(int r, int c):numRows(r), numColumns(c){
 IntMatrix::IntMatrix(const IntMatrix & rhs)  {
   numRows=rhs.numRows;
   numColumns=rhs.numColumns;
-  rows=new IntArray*[numRows];
+  rows=new IntArray*[numRows]();
   for(int i=0;i<numRows;i++){
     rows[i]=new IntArray(numColumns);
     for(int j=0;j<numColumns;j++){
@@ -36,7 +36,7 @@ IntMatrix &IntMatrix::operator=(const IntMatrix & rhs) {
     delete[] rows;
     numRows=rhs.numRows;
     numColumns=rhs.numColumns;
-    rows=new IntArray*[numRows];
+    rows=new IntArray*[numRows]();
     for(int i=0;i<numRows;i++){
       rows[i]=new IntArray(numColumns);
       for(int j=0;j<numColumns;j++){
