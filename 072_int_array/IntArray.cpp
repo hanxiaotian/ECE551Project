@@ -1,5 +1,5 @@
 #include "IntArray.h"
-#include <assert.h>
+#include <cassert>
 #include <ostream>
 
 IntArray::IntArray():data(NULL),numElements(0) {}
@@ -9,6 +9,10 @@ IntArray::IntArray(int n):data(new int[n]()),numElements(n) {}
 IntArray::IntArray(const IntArray & rhs):data(new int[rhs.numElements]()),numElements(rhs.numElements)  {
   for(int i=0;i<rhs.numElements;i++){
     data[i]=rhs.data[i];
+  }
+  if(numElements==0){
+    delete[] data;
+    data=NULL;
   }
 }
 
@@ -24,16 +28,22 @@ IntArray & IntArray::operator=(const IntArray & rhs) {
       data[i]=rhs.data[i];
     }
     numElements=rhs.numElements;
+    if(numElements==0){
+      delete[] data;
+      data=NULL;
+    }
   }
   return *this;
 }
 
 const int & IntArray::operator[](int index) const {
   assert((index<numElements)&&(index>=0));
+  assert(numElements!=0);
   return data[index];
 }
 int & IntArray::operator[](int index) {
   assert((index<numElements)&&(index>=0));
+  assert(numElements!=0);
   return data[index];
 }
 
@@ -55,9 +65,12 @@ bool IntArray::operator!=(const IntArray & rhs) const {
 
 std::ostream & operator<<(std::ostream & s, const IntArray & rhs) {
   s<<"{";
-  for(int i=0;i<rhs.numElements-1;i++){
+  if(rhs.numElements>0){
+    for(int i=0;i<rhs.numElements-1;i++){
     s<<rhs.data[i]<<", ";
+    }
+    s<<rhs.data[rhs.numElements-1];
   }
-  s<<rhs.data[rhs.numElements-1]<<"}";
+  s<<"}";
   return s;
 }
