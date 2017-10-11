@@ -90,6 +90,7 @@ IntArray & IntMatrix::operator[](int index){
 
 bool IntMatrix::operator==(const IntMatrix & rhs) const {
   if((numRows!=rhs.numRows)||(numColumns!=rhs.numColumns)) return false;
+  if((numRows==0)||(numColumns==0)) return true;
   for(int i=0;i<numRows;i++){
     for(int j=0;j<numColumns;j++){
       if((*rows[i])[j]!=(*rhs.rows[i])[j]) return false;
@@ -101,12 +102,15 @@ bool IntMatrix::operator==(const IntMatrix & rhs) const {
 IntMatrix IntMatrix::operator+(const IntMatrix & rhs) const {
   assert(numRows==rhs.numRows);
   assert(numColumns==rhs.numColumns);
-  assert(numRows>=0);
-  assert(numColumns>=0);
   IntMatrix result(numRows,numColumns);
-  for(int i=0;i<numRows;i++){
-    for(int j=0;j<numColumns;j++){
-      ((*result.rows[i])[j])=(*rows[i])[j]+(*rhs.rows[i])[j];
+  if((numRows==0)||(numColumns==0)){
+    return result;   
+  }
+  else{
+    for(int i=0;i<numRows;i++){
+      for(int j=0;j<numColumns;j++){
+	((*result.rows[i])[j])=(*rows[i])[j]+(*rhs.rows[i])[j];
+      }
     }
   }
   return result;
