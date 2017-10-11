@@ -36,10 +36,12 @@ IntMatrix::IntMatrix(const IntMatrix & rhs)  {
   }
 }
 IntMatrix::~IntMatrix() {
-  for(int i=0;i<numRows;i++){
-    delete rows[i];
+  if(numColumns!=0){
+    for(int i=0;i<numRows;i++){
+      delete rows[i];
+    }
+    delete[] rows;
   }
-  delete[] rows;
 }
 IntMatrix &IntMatrix::operator=(const IntMatrix & rhs) {
   if(this!=&rhs){
