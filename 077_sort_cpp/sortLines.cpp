@@ -18,7 +18,7 @@ int screenread(){
   string temp;
   vector<string> myVector;
   while(1){
-    cin>>temp;
+    getline(cin,temp);
     if(cin.eof()) break;
     myVector.push_back(temp);
   }
