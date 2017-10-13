@@ -31,9 +31,10 @@ int fileread(const char * filename){
   ifstream infile;
   vector<string> myVector;
   infile.open(filename);
-  if(!infile.is_open()){
+  if(!infile){
+    cerr<<"file open error"<<endl;
     perror("file open error");
-    exit(0);  
+    exit(EXIT_FAILURE);  
   }
   string str;
   while(1){
