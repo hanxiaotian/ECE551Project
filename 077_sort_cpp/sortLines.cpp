@@ -9,7 +9,7 @@ using namespace std;
 
 std::ostream & operator<<(std::ostream & s, const std::vector<string> & v) {
   for (size_t i = 0; i < v.size(); i++) {
-    s << v[i]<<endl;
+    s << v[i]<<'\n';
   }
   return s;
 }
@@ -23,7 +23,7 @@ int screenread(){
     myVector.push_back(temp);
   }
   sort(myVector.begin(),myVector.end());
-  cout<<myVector<<endl;
+  cout<<myVector;
   return EXIT_SUCCESS;
 }
 
@@ -31,7 +31,10 @@ int fileread(const char * filename){
   ifstream infile;
   vector<string> myVector;
   infile.open(filename);
-  if(!infile.is_open()) exit(EXIT_FAILURE);
+  if(!infile.is_open()){
+    perror("file open error");
+    exit(0);  
+  }
   string str;
   while(1){
     getline(infile,str);
@@ -40,7 +43,7 @@ int fileread(const char * filename){
   }
   infile.close();
   sort(myVector.begin(),myVector.end());
-  cout<<myVector<<endl;
+  cout<<myVector;
   return EXIT_SUCCESS;
 }
 
@@ -49,8 +52,8 @@ int main(int argc, char **argv){
     screenread();
   }
   else{
-    for(int i=0;i<argc;i++){
-      fileread(argv[i+1]);
+    for(int i=1;i<argc;i++){
+      fileread(argv[i]);
     }
   }
   return EXIT_SUCCESS;
