@@ -97,6 +97,10 @@ void mystat(char * filename){
 }
 
 int main(int argc, char ** argv){
+  if(argc==1){
+    perror("stat: missing operand\nTry 'stat --help' for more information.\n");
+    return EXIT_FAILURE;
+  }
   for(int i=1;i<argc;i++){
     mystat(argv[i]);
   }
