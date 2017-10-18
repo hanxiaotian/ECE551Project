@@ -39,7 +39,7 @@ class LinkedList{
   };
 
   LinkedList& operator=(const LinkedList &rhs){
-    if(this!=rhs){
+    if(this!=&rhs){
       destory();
       for(Node * it=rhs.head;it!=NULL;it=it->next){
 	addBack(it->data);
