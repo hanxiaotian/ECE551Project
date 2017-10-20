@@ -151,4 +151,22 @@ int main(int argc, char ** argv) {
   delete items;
   delete toRemove;
   return EXIT_SUCCESS;
+
+  /*  LinkedList<int> intlist;
+  intlist.addFront(1);
+  intlist.addBack(2);
+  int size=intlist.getSize();
+  LinkedList<int> intlist2(intlist);
+  LinkedList<int> intlist3;
+  intlist.remove(1);
+  int a=intlist[0];
+  intlist3=intlist;
+  tyr{
+    std::cout<<intlist[5]<<std::endl;
+  }
+  catch{}
+  std::cout<<intlist.find(3)<<std::endl;
+  std::cout<<size<<"  "<<a<<std::endl;
+  return EXIT_SUCCESS;
+  */
 }
