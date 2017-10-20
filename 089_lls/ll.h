@@ -5,6 +5,13 @@
 #include <assert.h>
 #include <cstdio>
 
+class My_Exception:public std::exception{
+ public:
+  virtual const char * what() const throw(){
+    return "index out of range.\n";
+  }
+};
+
 template<typename T>
 class LinkedList{
  private:
@@ -18,12 +25,12 @@ class LinkedList{
   Node(const T& d, Node * n, Node * p):data(d),next(n),previous(p){}
   };
   
-  class My_Exception:public std::exception{
+  /*  class My_Exception:public std::exception{
   public:
     virtual const char * what() const throw(){
       return "index out of range.\n";
     }
-  };
+    };*/
   
   Node * head;
   Node * tail;
@@ -49,13 +56,9 @@ class LinkedList{
   };
 
   T& operator[](int index){
-    try{
-      if(index<0 || index>getSize()){
-	throw new My_Exception();
-      }
-    }
-    catch(My_Exception &e){
-      std::perror(e.what());
+    My_Exception e;
+    if(index<0 || index>getSize()){
+      throw e;
     }
     Node * it=head;
     for(int i=0;i<index;i++){
@@ -65,13 +68,9 @@ class LinkedList{
   };
 
   const T& operator[](int index) const{
-    try{
-      if(index<0 || index>getSize()){
-	throw new My_Exception();
-      }
-    }
-    catch(My_Exception &e){
-      std::perror(e.what());
+    My_Exception e;
+    if(index<0 || index>getSize()){
+      throw e;
     }
     Node * it=head;
     for(int i=0;i<index;i++){
