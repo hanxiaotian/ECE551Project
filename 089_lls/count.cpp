@@ -118,6 +118,7 @@ LinkedList<std::string> * readInput(const char * fname) {
 }
 
 int main(int argc, char ** argv) {
+  /*
   if (argc != 3) {
     std::cerr << "Usage: ll infile removalfile\n";
     return EXIT_FAILURE;
@@ -151,22 +152,29 @@ int main(int argc, char ** argv) {
   delete items;
   delete toRemove;
   return EXIT_SUCCESS;
-
-  /*  LinkedList<int> intlist;
+*/
+  LinkedList<int> intlist;
   intlist.addFront(1);
   intlist.addBack(2);
+  intlist.addBack(3);
   int size=intlist.getSize();
   LinkedList<int> intlist2(intlist);
   LinkedList<int> intlist3;
   intlist.remove(1);
   int a=intlist[0];
+  intlist3.addBack(5);
   intlist3=intlist;
+  /*
   tyr{
     std::cout<<intlist[5]<<std::endl;
   }
   catch{}
+  */
+  std::cout<<"intlist: ";
   std::cout<<intlist.find(3)<<std::endl;
   std::cout<<size<<"  "<<a<<std::endl;
+  std::cout<<"intlist3: ";
+  std::cout<<intlist3[0]<<" "<<intlist3[1]<<std::endl;
   return EXIT_SUCCESS;
-  */
+  
 }
