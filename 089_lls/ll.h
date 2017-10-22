@@ -86,6 +86,8 @@ class LinkedList{
       head=head->next;
       delete it;
     }
+    head=NULL;
+    tail=NULL;
   };
 
   ~LinkedList(){
