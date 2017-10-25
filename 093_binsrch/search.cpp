@@ -1,5 +1,6 @@
 #ifndef __SEARCH__
 #define __SEARCH__
+#include "function.h"
 
 int binarySearchForZero(Function<int, int> * f, int low, int high);
 
