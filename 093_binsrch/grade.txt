@@ -1,0 +1,27 @@
+Grading at 10/25/2017:15:13:27.759607
+For commit ID 8b3fff7a77fa36179605c259d533aaa62a053ae5
+Stripping out any main you may have written, and compiling...
+newsearch.cpp:4:25: error: ‘Function’ was not declared in this scope
+ int binarySearchForZero(Function<int, int> * f, int low, int high){
+                         ^
+newsearch.cpp:4:34: error: expected primary-expression before ‘int’
+ int binarySearchForZero(Function<int, int> * f, int low, int high){
+                                  ^
+newsearch.cpp:4:39: error: expected primary-expression before ‘int’
+ int binarySearchForZero(Function<int, int> * f, int low, int high){
+                                       ^
+newsearch.cpp:4:49: error: expected primary-expression before ‘int’
+ int binarySearchForZero(Function<int, int> * f, int low, int high){
+                                                 ^
+newsearch.cpp:4:58: error: expected primary-expression before ‘int’
+ int binarySearchForZero(Function<int, int> * f, int low, int high){
+                                                          ^
+newsearch.cpp:4:66: error: expression list treated as compound expression in initializer [-fpermissive]
+ int binarySearchForZero(Function<int, int> * f, int low, int high){
+                                                                  ^
+newsearch.cpp:4:67: error: expected ‘,’ or ‘;’ before ‘{’ token
+ int binarySearchForZero(Function<int, int> * f, int low, int high){
+                                                                   ^
+The code did not compile
+
+Overall Grade: F
