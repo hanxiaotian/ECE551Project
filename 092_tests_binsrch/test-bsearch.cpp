@@ -62,6 +62,7 @@ int main(){
   check(mysin,52358,150000,52359,"the range [52358,150000)");
   check(mysin,0,52360,52359,"the range [0,52360)");
   check(myx,-1000000,1000007,0,"the range [-1,0)");
+  check(myx,-1,1000007,0,"the range [-1,1000070)");
   delete mysin;
   delete myx;
   return EXIT_SUCCESS;
