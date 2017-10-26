@@ -24,13 +24,13 @@ int main(){
   map.remove(2);
   map.remove(16);
   map.remove(-1);
-  try{
+  /*  try{
     map.lookup(0);
   }
   catch(std::invalid_argument &ia){
     cerr<<ia.what();
     exit(0);
-  }
+    }*/
   map.print();
   return EXIT_SUCCESS;
 }

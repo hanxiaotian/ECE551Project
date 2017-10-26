@@ -79,10 +79,10 @@ class BstMap: public Map<K,V>{
       return NULL;
     }
     if(key<current->k) {
-      current=del(current->left, key);
+      current->left=del(current->left, key);
     }
     else if(key>current->k){
-      current=del(current->right, key);
+      current->right=del(current->right, key);
     }
     else{
       if(current->left == NULL && current->right == NULL) {
@@ -103,10 +103,10 @@ class BstMap: public Map<K,V>{
 	Node *temp = FinMin(current->right);
 	current->k=temp->k;
 	current->v=temp->v;
-	del(current->right,temp->k);
+	current->right=del(current->right,temp->k);
       }
     }
-    reutn current;
+    return current;
   };
   virtual void remove(const K& key){
     root=del(root,key);
