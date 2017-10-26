@@ -74,15 +74,15 @@ class BstMap: public Map<K,V>{
     if(current->left!=NULL) return FinMin(current->left);
     else return current;
   }
-  Node * del(Node * & current,const K & key){
+  Node* del(Node * & current,const K & key){
     if(current==NULL){
       return NULL;
     }
     if(key<current->k) {
-      current->left = del(current->left, key);
+      current=del(current->left, key);
     }
     else if(key>current->k){
-      current->right = del(current->right, key);
+      current=del(current->right, key);
     }
     else{
       if(current->left == NULL && current->right == NULL) {
@@ -90,14 +90,14 @@ class BstMap: public Map<K,V>{
 	current = NULL;
       }
       else if(current->left == NULL) {
-	  Node *temp = current;
-	  current = current->right;
-	  delete temp;
+	Node *temp = current;
+	current = current->right;
+	delete temp;
       }
       else if(current->right == NULL) {
-	  Node *temp = current;
-	  current=current->left;
-	  delete temp;
+	Node *temp = current;
+	current=current->left;
+	delete temp;
       }
       else{
 	Node *temp = FinMin(current->right);
@@ -106,10 +106,10 @@ class BstMap: public Map<K,V>{
 	del(current->right,temp->k);
       }
     }
-    return current;
+    reutn current;
   };
   virtual void remove(const K& key){
-    del(root,key);
+    root=del(root,key);
   };
 
   void traverse(Node* current){
