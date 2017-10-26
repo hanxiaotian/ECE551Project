@@ -11,14 +11,7 @@ int main(){
   map.add(5,"a");
   map.add(4,"b");
   map.add(6,"c");
-  cout<<map.lookup(4)<<endl;
+  map.add(3,"x");
   map.remove(5);
-  try{
-    cout<<map.lookup(4)<<endl;
-  }
-  catch(invalid_argument & ia){
-    cerr<<ia.what()<<endl;
-    exit(0);
-  }
   return EXIT_SUCCESS;
 }

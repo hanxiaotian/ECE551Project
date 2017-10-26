@@ -42,7 +42,7 @@ class BstMap: public Map<K,V>{
       else current->right=new Node(key,value);
     }
     else if(key<current->k){
-      if(current->left) insert(current->right,key,value);
+      if(current->left) insert(current->left,key,value);
       else current->left=new Node(key,value);
     }
   };
@@ -96,10 +96,10 @@ class BstMap: public Map<K,V>{
 	  delete temp;
       }
       else{
-	Node *temp = FinMin(root->right);
+	Node *temp = FinMin(current->right);
 	current->k=temp->k;
 	current->v=temp->v;
-	delete temp;
+	del(current->right,temp->k);
       }
     }
     return current;
