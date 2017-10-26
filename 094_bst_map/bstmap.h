@@ -52,11 +52,15 @@ class BstMap: public Map<K,V>{
 
   const V & find(Node * current,const K & key) const{
     if(key>current->k){
-      if(current->right==NULL) throw std::invalid_argument("invalide key!");
+      if(current->right==NULL){
+	throw std::invalid_argument("invalide key!");
+      }
       return find(current->right,key);
     }
     else if(key<current->k){
-      if(current->left==NULL) throw std::invalid_argument("invalide key!");
+      if(current->left==NULL){
+	throw std::invalid_argument("invalide key!");
+      }
       return find(current->left,key);
     }
     else return current->v;
@@ -106,6 +110,18 @@ class BstMap: public Map<K,V>{
   };
   virtual void remove(const K& key){
     del(root,key);
+  };
+
+  void traverse(Node* current){
+    if(current!=NULL){
+      traverse(current->left);
+      std::cout<<current->k<<" ";
+      traverse(current->right);
+      //std::cout<<current->k<<" ";
+    }
+  };
+  void print(){
+    traverse(root);
   };
 };
 

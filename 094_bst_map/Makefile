@@ -1,3 +1,3 @@
 test: test.cpp
-	g++ -pedantic -ggdb -Wall -Werror test.cpp -o test 
+	g++ -pedantic -ggdb -Wall -Werror -g test.cpp -o test 
 
