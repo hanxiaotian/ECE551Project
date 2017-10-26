@@ -21,9 +21,11 @@ int main(){
   map.add(16,16);
   map.add(44,44);
   map.add(77,77);
+  map.add(4,5);
   map.remove(2);
   map.remove(16);
   map.remove(-1);
+  cout<<map.lookup(4)<<endl;
   /*  try{
     map.lookup(0);
   }
