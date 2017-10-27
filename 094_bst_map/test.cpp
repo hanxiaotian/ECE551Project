@@ -38,6 +38,11 @@ int main(){
   BstMap<int,int> map2(map);
   map2.remove(88);
   map2.print();
-  map.print();
+  cout<<endl;
+  BstMap<int,int> map3(map);
+  map3.print();
+  cout<<endl;
+  map3=map2;
+  map3.print();
   return EXIT_SUCCESS;
 }

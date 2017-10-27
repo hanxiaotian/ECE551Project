@@ -31,10 +31,11 @@ class BstMap: public Map<K,V>{
     copy(root,rhs.root);
   };
   BstMap & operator=(const BstMap &rhs){
-    if(this!=rhs){
+    if(this!=&rhs){
       destory(root);
       copy(root,rhs.root);
     }
+    return *this;
   };
   
   void destory(Node * & current){
