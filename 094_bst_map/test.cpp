@@ -34,5 +34,10 @@ int main(){
     exit(0);
     }*/
   map.print();
+  cout<<endl;
+  BstMap<int,int> map2(map);
+  map2.remove(88);
+  map2.print();
+  map.print();
   return EXIT_SUCCESS;
 }

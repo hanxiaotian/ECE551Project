@@ -22,6 +22,21 @@ class BstMap: public Map<K,V>{
  public:
  BstMap():root(NULL){};
 
+  void copy(Node * &current, const Node* rcurrent){
+    if(rcurrent!=NULL) current=new Node(rcurrent->k,rcurrent->v);
+    if(rcurrent->left!=NULL) copy(current->left,rcurrent->left);
+    if(rcurrent->right!=NULL) copy(current->right,rcurrent->right);
+  };
+  BstMap(const BstMap &rhs){
+    copy(root,rhs.root);
+  };
+  BstMap & operator=(const BstMap &rhs){
+    if(this!=rhs){
+      destory(root);
+      copy(root,rhs.root);
+    }
+  };
+  
   void destory(Node * & current){
     if(current!=NULL){
       destory(current->left);
