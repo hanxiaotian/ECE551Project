@@ -1,1140 +1,409 @@
-Grading at 10/27/2017:03:42:14.245282
-For commit ID 958a67692d086b0a0a6a54f2f4353b53126fc1a8
+Grading at 10/27/2017:03:47:14.161617
+For commit ID 6d62d5cf96d5f6bde54613648d1a2eef91278df2
 -----------------------------------------------
 testcase 1 : Testing with BstMap<int,int>
 ...compiling...
-In file included from 89-tester.cpp:1:0:
-bstmap.h: In instantiation of ‘BstMap<K, V>& BstMap<K, V>::operator=(const BstMap<K, V>&) [with K = int; V = int]’:
-89-tester.cpp:131:7:   required from here
-bstmap.h:34:12: error: no match for ‘operator!=’ (operand types are ‘BstMap<int, int>*’ and ‘const BstMap<int, int>’)
-     if(this!=rhs){
-            ^
-bstmap.h:38:3: error: no return statement in function returning non-void [-Werror=return-type]
-   };
-   ^
-cc1plus: all warnings being treated as errors
-The code did not compile.  This test failed.
+The code compiled.
+  - Valgrind reported errors
+Valgrind reported errors (test failed).
+==57819== Memcheck, a memory error detector
+==57819== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==57819== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==57819== Command: ./test.1
+==57819== Parent PID: 57818
+==57819== 
+==57819== Invalid read of size 8
+==57819==    at 0x402634: BstMap<int, int>::copy(BstMap<int, int>::Node*&, BstMap<int, int>::Node const*) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.1)
+==57819==    by 0x40249B: BstMap<int, int>::operator=(BstMap<int, int> const&) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.1)
+==57819==    by 0x401BA8: main (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.1)
+==57819==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==57819== 
+==57819== 
+==57819== Process terminating with default action of signal 11 (SIGSEGV)
+==57819==  Access not within mapped region at address 0x0
+==57819==    at 0x402634: BstMap<int, int>::copy(BstMap<int, int>::Node*&, BstMap<int, int>::Node const*) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.1)
+==57819==    by 0x40249B: BstMap<int, int>::operator=(BstMap<int, int> const&) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.1)
+==57819==    by 0x401BA8: main (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.1)
+==57819==  If you believe this happened as a result of a stack
+==57819==  overflow in your program's main thread (unlikely but
+==57819==  possible), you can try to increase the size of the
+==57819==  main thread stack using the --main-stacksize= flag.
+==57819==  The main thread stack size used in this run was 8388608.
+==57819== 
+==57819== HEAP SUMMARY:
+==57819==     in use at exit: 72,736 bytes in 3 blocks
+==57819==   total heap usage: 303 allocs, 300 frees, 99,410 bytes allocated
+==57819== 
+==57819== LEAK SUMMARY:
+==57819==    definitely lost: 0 bytes in 0 blocks
+==57819==    indirectly lost: 0 bytes in 0 blocks
+==57819==      possibly lost: 0 bytes in 0 blocks
+==57819==    still reachable: 32 bytes in 2 blocks
+==57819==         suppressed: 72,704 bytes in 1 blocks
+==57819== Reachable blocks (those to which a pointer was found) are not shown.
+==57819== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==57819== 
+==57819== For counts of detected and suppressed errors, rerun with: -v
+==57819== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 -----------------------------------------------
 testcase 2 : Testing with BstMap<int,std::string>
 ...compiling...
-In file included from 89-tester.cpp:1:0:
-bstmap.h: In instantiation of ‘BstMap<K, V>& BstMap<K, V>::operator=(const BstMap<K, V>&) [with K = int; V = std::__cxx11::basic_string<char>]’:
-89-tester.cpp:131:7:   required from here
-bstmap.h:34:12: error: no match for ‘operator!=’ (operand types are ‘BstMap<int, std::__cxx11::basic_string<char> >*’ and ‘const BstMap<int, std::__cxx11::basic_string<char> >’)
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/locale_facets.h:48:0,
-                 from /usr/include/c++/5/bits/basic_ios.h:37,
-                 from /usr/include/c++/5/ios:44,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/streambuf_iterator.h:210:5: note: candidate: template<class _CharT, class _Traits> bool std::operator!=(const std::istreambuf_iterator<_CharT, _Traits>&, const std::istreambuf_iterator<_CharT, _Traits>&)
-     operator!=(const istreambuf_iterator<_CharT, _Traits>& __a,
-     ^
-/usr/include/c++/5/bits/streambuf_iterator.h:210:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::istreambuf_iterator<_CharT, _Traits>’ and ‘BstMap<int, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/string:52:0,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/basic_string.h:4974:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, const _CharT*)
-     operator!=(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
-     ^
-/usr/include/c++/5/bits/basic_string.h:4974:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>’ and ‘BstMap<int, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/string:52:0,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/basic_string.h:4962:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const _CharT*, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)
-     operator!=(const _CharT* __lhs,
-     ^
-/usr/include/c++/5/bits/basic_string.h:4962:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   ‘const BstMap<int, std::__cxx11::basic_string<char> >’ is not derived from ‘const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/string:52:0,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/basic_string.h:4950:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)
-     operator!=(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
-     ^
-/usr/include/c++/5/bits/basic_string.h:4950:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>’ and ‘BstMap<int, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/string:41:0,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/allocator.h:146:5: note: candidate: template<class _Tp> bool std::operator!=(const std::allocator<_CharT>&, const std::allocator<_CharT>&)
-     operator!=(const allocator<_Tp>&, const allocator<_Tp>&)
-     ^
-/usr/include/c++/5/bits/allocator.h:146:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::allocator<_CharT>’ and ‘BstMap<int, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/string:41:0,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/allocator.h:140:5: note: candidate: template<class _T1, class _T2> bool std::operator!=(const std::allocator<_CharT>&, const std::allocator<_T2>&)
-     operator!=(const allocator<_T1>&, const allocator<_T2>&)
-     ^
-/usr/include/c++/5/bits/allocator.h:140:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::allocator<_CharT>’ and ‘BstMap<int, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/stl_algobase.h:67:0,
-                 from /usr/include/c++/5/bits/char_traits.h:39,
-                 from /usr/include/c++/5/ios:40,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/stl_iterator.h:354:5: note: candidate: template<class _IteratorL, class _IteratorR> bool std::operator!=(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)
-     operator!=(const reverse_iterator<_IteratorL>& __x,
-     ^
-/usr/include/c++/5/bits/stl_iterator.h:354:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::reverse_iterator<_Iterator>’ and ‘BstMap<int, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/stl_algobase.h:67:0,
-                 from /usr/include/c++/5/bits/char_traits.h:39,
-                 from /usr/include/c++/5/ios:40,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/stl_iterator.h:304:5: note: candidate: template<class _Iterator> bool std::operator!=(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_Iterator>&)
-     operator!=(const reverse_iterator<_Iterator>& __x,
-     ^
-/usr/include/c++/5/bits/stl_iterator.h:304:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::reverse_iterator<_Iterator>’ and ‘BstMap<int, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/stl_algobase.h:64:0,
-                 from /usr/include/c++/5/bits/char_traits.h:39,
-                 from /usr/include/c++/5/ios:40,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/stl_pair.h:227:5: note: candidate: template<class _T1, class _T2> bool std::operator!=(const std::pair<_T1, _T2>&, const std::pair<_T1, _T2>&)
-     operator!=(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y)
-     ^
-/usr/include/c++/5/bits/stl_pair.h:227:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::pair<_T1, _T2>’ and ‘BstMap<int, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/iosfwd:40:0,
-                 from /usr/include/c++/5/ios:38,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/postypes.h:221:5: note: candidate: template<class _StateT> bool std::operator!=(const std::fpos<_StateT>&, const std::fpos<_StateT>&)
-     operator!=(const fpos<_StateT>& __lhs, const fpos<_StateT>& __rhs)
-     ^
-/usr/include/c++/5/bits/postypes.h:221:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::fpos<_StateT>’ and ‘BstMap<int, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/x86_64-linux-gnu/c++/5/bits/c++allocator.h:33:0,
-                 from /usr/include/c++/5/bits/allocator.h:46,
-                 from /usr/include/c++/5/string:41,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/ext/new_allocator.h:144:5: note: candidate: template<class _Tp> bool __gnu_cxx::operator!=(const __gnu_cxx::new_allocator<_Tp>&, const __gnu_cxx::new_allocator<_Tp>&)
-     operator!=(const new_allocator<_Tp>&, const new_allocator<_Tp>&)
-     ^
-/usr/include/c++/5/ext/new_allocator.h:144:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const __gnu_cxx::new_allocator<_Tp>’ and ‘BstMap<int, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/stl_algobase.h:67:0,
-                 from /usr/include/c++/5/bits/char_traits.h:39,
-                 from /usr/include/c++/5/ios:40,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/stl_iterator.h:841:5: note: candidate: template<class _Iterator, class _Container> bool __gnu_cxx::operator!=(const __gnu_cxx::__normal_iterator<_Iterator, _Container>&, const __gnu_cxx::__normal_iterator<_Iterator, _Container>&)
-     operator!=(const __normal_iterator<_Iterator, _Container>& __lhs,
-     ^
-/usr/include/c++/5/bits/stl_iterator.h:841:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const __gnu_cxx::__normal_iterator<_Iterator, _Container>’ and ‘BstMap<int, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/stl_algobase.h:67:0,
-                 from /usr/include/c++/5/bits/char_traits.h:39,
-                 from /usr/include/c++/5/ios:40,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/stl_iterator.h:834:5: note: candidate: template<class _IteratorL, class _IteratorR, class _Container> bool __gnu_cxx::operator!=(const __gnu_cxx::__normal_iterator<_IteratorL, _Container>&, const __gnu_cxx::__normal_iterator<_IteratorR, _Container>&)
-     operator!=(const __normal_iterator<_IteratorL, _Container>& __lhs,
-     ^
-/usr/include/c++/5/bits/stl_iterator.h:834:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const __gnu_cxx::__normal_iterator<_IteratorL, _Container>’ and ‘BstMap<int, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-bstmap.h:38:3: error: no return statement in function returning non-void [-Werror=return-type]
-   };
-   ^
-cc1plus: all warnings being treated as errors
-The code did not compile.  This test failed.
+The code compiled.
+  - Valgrind reported errors
+Valgrind reported errors (test failed).
+==57829== Memcheck, a memory error detector
+==57829== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==57829== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==57829== Command: ./test.2
+==57829== Parent PID: 57828
+==57829== 
+==57829== Invalid read of size 8
+==57829==    at 0x4028BA: BstMap<int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::copy(BstMap<int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::Node*&, BstMap<int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::Node const*) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.2)
+==57829==    by 0x4026ED: BstMap<int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::operator=(BstMap<int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.2)
+==57829==    by 0x401CCE: main (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.2)
+==57829==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==57829== 
+==57829== 
+==57829== Process terminating with default action of signal 11 (SIGSEGV)
+==57829==  Access not within mapped region at address 0x0
+==57829==    at 0x4028BA: BstMap<int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::copy(BstMap<int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::Node*&, BstMap<int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::Node const*) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.2)
+==57829==    by 0x4026ED: BstMap<int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::operator=(BstMap<int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.2)
+==57829==    by 0x401CCE: main (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.2)
+==57829==  If you believe this happened as a result of a stack
+==57829==  overflow in your program's main thread (unlikely but
+==57829==  possible), you can try to increase the size of the
+==57829==  main thread stack using the --main-stacksize= flag.
+==57829==  The main thread stack size used in this run was 8388608.
+==57829== 
+==57829== HEAP SUMMARY:
+==57829==     in use at exit: 72,736 bytes in 3 blocks
+==57829==   total heap usage: 485 allocs, 482 frees, 105,372 bytes allocated
+==57829== 
+==57829== LEAK SUMMARY:
+==57829==    definitely lost: 0 bytes in 0 blocks
+==57829==    indirectly lost: 0 bytes in 0 blocks
+==57829==      possibly lost: 0 bytes in 0 blocks
+==57829==    still reachable: 32 bytes in 2 blocks
+==57829==         suppressed: 72,704 bytes in 1 blocks
+==57829== Reachable blocks (those to which a pointer was found) are not shown.
+==57829== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==57829== 
+==57829== For counts of detected and suppressed errors, rerun with: -v
+==57829== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 -----------------------------------------------
 testcase 3 : Testing with BstMap<int,(a custom class we wrote)>
 ...compiling...
-In file included from 89-tester.cpp:1:0:
-bstmap.h: In instantiation of ‘BstMap<K, V>& BstMap<K, V>::operator=(const BstMap<K, V>&) [with K = int; V = Tester]’:
-89-tester.cpp:131:7:   required from here
-bstmap.h:34:12: error: no match for ‘operator!=’ (operand types are ‘BstMap<int, Tester>*’ and ‘const BstMap<int, Tester>’)
-     if(this!=rhs){
-            ^
-bstmap.h:38:3: error: no return statement in function returning non-void [-Werror=return-type]
-   };
-   ^
-cc1plus: all warnings being treated as errors
-The code did not compile.  This test failed.
+The code compiled.
+  - Valgrind reported errors
+Valgrind reported errors (test failed).
+==57838== Memcheck, a memory error detector
+==57838== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==57838== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==57838== Command: ./test.3
+==57838== Parent PID: 57837
+==57838== 
+==57838== Invalid read of size 8
+==57838==    at 0x402914: BstMap<int, Tester>::copy(BstMap<int, Tester>::Node*&, BstMap<int, Tester>::Node const*) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.3)
+==57838==    by 0x402747: BstMap<int, Tester>::operator=(BstMap<int, Tester> const&) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.3)
+==57838==    by 0x401CCE: main (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.3)
+==57838==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==57838== 
+==57838== 
+==57838== Process terminating with default action of signal 11 (SIGSEGV)
+==57838==  Access not within mapped region at address 0x0
+==57838==    at 0x402914: BstMap<int, Tester>::copy(BstMap<int, Tester>::Node*&, BstMap<int, Tester>::Node const*) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.3)
+==57838==    by 0x402747: BstMap<int, Tester>::operator=(BstMap<int, Tester> const&) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.3)
+==57838==    by 0x401CCE: main (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.3)
+==57838==  If you believe this happened as a result of a stack
+==57838==  overflow in your program's main thread (unlikely but
+==57838==  possible), you can try to increase the size of the
+==57838==  main thread stack using the --main-stacksize= flag.
+==57838==  The main thread stack size used in this run was 8388608.
+==57838== 
+==57838== HEAP SUMMARY:
+==57838==     in use at exit: 72,736 bytes in 3 blocks
+==57838==   total heap usage: 511 allocs, 508 frees, 106,472 bytes allocated
+==57838== 
+==57838== LEAK SUMMARY:
+==57838==    definitely lost: 0 bytes in 0 blocks
+==57838==    indirectly lost: 0 bytes in 0 blocks
+==57838==      possibly lost: 0 bytes in 0 blocks
+==57838==    still reachable: 32 bytes in 2 blocks
+==57838==         suppressed: 72,704 bytes in 1 blocks
+==57838== Reachable blocks (those to which a pointer was found) are not shown.
+==57838== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==57838== 
+==57838== For counts of detected and suppressed errors, rerun with: -v
+==57838== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 -----------------------------------------------
 testcase 4 : Testing with BstMap<std::string,int>
 ...compiling...
-In file included from 89-tester.cpp:1:0:
-bstmap.h: In instantiation of ‘BstMap<K, V>& BstMap<K, V>::operator=(const BstMap<K, V>&) [with K = std::__cxx11::basic_string<char>; V = int]’:
-89-tester.cpp:131:7:   required from here
-bstmap.h:34:12: error: no match for ‘operator!=’ (operand types are ‘BstMap<std::__cxx11::basic_string<char>, int>*’ and ‘const BstMap<std::__cxx11::basic_string<char>, int>’)
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/locale_facets.h:48:0,
-                 from /usr/include/c++/5/bits/basic_ios.h:37,
-                 from /usr/include/c++/5/ios:44,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/streambuf_iterator.h:210:5: note: candidate: template<class _CharT, class _Traits> bool std::operator!=(const std::istreambuf_iterator<_CharT, _Traits>&, const std::istreambuf_iterator<_CharT, _Traits>&)
-     operator!=(const istreambuf_iterator<_CharT, _Traits>& __a,
-     ^
-/usr/include/c++/5/bits/streambuf_iterator.h:210:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::istreambuf_iterator<_CharT, _Traits>’ and ‘BstMap<std::__cxx11::basic_string<char>, int>*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/string:52:0,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/basic_string.h:4974:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, const _CharT*)
-     operator!=(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
-     ^
-/usr/include/c++/5/bits/basic_string.h:4974:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>’ and ‘BstMap<std::__cxx11::basic_string<char>, int>*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/string:52:0,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/basic_string.h:4962:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const _CharT*, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)
-     operator!=(const _CharT* __lhs,
-     ^
-/usr/include/c++/5/bits/basic_string.h:4962:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   ‘const BstMap<std::__cxx11::basic_string<char>, int>’ is not derived from ‘const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/string:52:0,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/basic_string.h:4950:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)
-     operator!=(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
-     ^
-/usr/include/c++/5/bits/basic_string.h:4950:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>’ and ‘BstMap<std::__cxx11::basic_string<char>, int>*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/string:41:0,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/allocator.h:146:5: note: candidate: template<class _Tp> bool std::operator!=(const std::allocator<_CharT>&, const std::allocator<_CharT>&)
-     operator!=(const allocator<_Tp>&, const allocator<_Tp>&)
-     ^
-/usr/include/c++/5/bits/allocator.h:146:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::allocator<_CharT>’ and ‘BstMap<std::__cxx11::basic_string<char>, int>*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/string:41:0,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/allocator.h:140:5: note: candidate: template<class _T1, class _T2> bool std::operator!=(const std::allocator<_CharT>&, const std::allocator<_T2>&)
-     operator!=(const allocator<_T1>&, const allocator<_T2>&)
-     ^
-/usr/include/c++/5/bits/allocator.h:140:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::allocator<_CharT>’ and ‘BstMap<std::__cxx11::basic_string<char>, int>*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/stl_algobase.h:67:0,
-                 from /usr/include/c++/5/bits/char_traits.h:39,
-                 from /usr/include/c++/5/ios:40,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/stl_iterator.h:354:5: note: candidate: template<class _IteratorL, class _IteratorR> bool std::operator!=(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)
-     operator!=(const reverse_iterator<_IteratorL>& __x,
-     ^
-/usr/include/c++/5/bits/stl_iterator.h:354:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::reverse_iterator<_Iterator>’ and ‘BstMap<std::__cxx11::basic_string<char>, int>*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/stl_algobase.h:67:0,
-                 from /usr/include/c++/5/bits/char_traits.h:39,
-                 from /usr/include/c++/5/ios:40,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/stl_iterator.h:304:5: note: candidate: template<class _Iterator> bool std::operator!=(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_Iterator>&)
-     operator!=(const reverse_iterator<_Iterator>& __x,
-     ^
-/usr/include/c++/5/bits/stl_iterator.h:304:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::reverse_iterator<_Iterator>’ and ‘BstMap<std::__cxx11::basic_string<char>, int>*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/stl_algobase.h:64:0,
-                 from /usr/include/c++/5/bits/char_traits.h:39,
-                 from /usr/include/c++/5/ios:40,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/stl_pair.h:227:5: note: candidate: template<class _T1, class _T2> bool std::operator!=(const std::pair<_T1, _T2>&, const std::pair<_T1, _T2>&)
-     operator!=(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y)
-     ^
-/usr/include/c++/5/bits/stl_pair.h:227:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::pair<_T1, _T2>’ and ‘BstMap<std::__cxx11::basic_string<char>, int>*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/iosfwd:40:0,
-                 from /usr/include/c++/5/ios:38,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/postypes.h:221:5: note: candidate: template<class _StateT> bool std::operator!=(const std::fpos<_StateT>&, const std::fpos<_StateT>&)
-     operator!=(const fpos<_StateT>& __lhs, const fpos<_StateT>& __rhs)
-     ^
-/usr/include/c++/5/bits/postypes.h:221:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::fpos<_StateT>’ and ‘BstMap<std::__cxx11::basic_string<char>, int>*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/x86_64-linux-gnu/c++/5/bits/c++allocator.h:33:0,
-                 from /usr/include/c++/5/bits/allocator.h:46,
-                 from /usr/include/c++/5/string:41,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/ext/new_allocator.h:144:5: note: candidate: template<class _Tp> bool __gnu_cxx::operator!=(const __gnu_cxx::new_allocator<_Tp>&, const __gnu_cxx::new_allocator<_Tp>&)
-     operator!=(const new_allocator<_Tp>&, const new_allocator<_Tp>&)
-     ^
-/usr/include/c++/5/ext/new_allocator.h:144:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const __gnu_cxx::new_allocator<_Tp>’ and ‘BstMap<std::__cxx11::basic_string<char>, int>*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/stl_algobase.h:67:0,
-                 from /usr/include/c++/5/bits/char_traits.h:39,
-                 from /usr/include/c++/5/ios:40,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/stl_iterator.h:841:5: note: candidate: template<class _Iterator, class _Container> bool __gnu_cxx::operator!=(const __gnu_cxx::__normal_iterator<_Iterator, _Container>&, const __gnu_cxx::__normal_iterator<_Iterator, _Container>&)
-     operator!=(const __normal_iterator<_Iterator, _Container>& __lhs,
-     ^
-/usr/include/c++/5/bits/stl_iterator.h:841:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const __gnu_cxx::__normal_iterator<_Iterator, _Container>’ and ‘BstMap<std::__cxx11::basic_string<char>, int>*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/stl_algobase.h:67:0,
-                 from /usr/include/c++/5/bits/char_traits.h:39,
-                 from /usr/include/c++/5/ios:40,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/stl_iterator.h:834:5: note: candidate: template<class _IteratorL, class _IteratorR, class _Container> bool __gnu_cxx::operator!=(const __gnu_cxx::__normal_iterator<_IteratorL, _Container>&, const __gnu_cxx::__normal_iterator<_IteratorR, _Container>&)
-     operator!=(const __normal_iterator<_IteratorL, _Container>& __lhs,
-     ^
-/usr/include/c++/5/bits/stl_iterator.h:834:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const __gnu_cxx::__normal_iterator<_IteratorL, _Container>’ and ‘BstMap<std::__cxx11::basic_string<char>, int>*’
-     if(this!=rhs){
-            ^
-bstmap.h:38:3: error: no return statement in function returning non-void [-Werror=return-type]
-   };
-   ^
-cc1plus: all warnings being treated as errors
-The code did not compile.  This test failed.
+The code compiled.
+  - Valgrind reported errors
+Valgrind reported errors (test failed).
+==57847== Memcheck, a memory error detector
+==57847== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==57847== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==57847== Command: ./test.4
+==57847== Parent PID: 57846
+==57847== 
+==57847== Invalid read of size 8
+==57847==    at 0x402A32: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int>::copy(BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int>::Node*&, BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int>::Node const*) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.4)
+==57847==    by 0x402865: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int>::operator=(BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int> const&) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.4)
+==57847==    by 0x401E60: main (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.4)
+==57847==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==57847== 
+==57847== 
+==57847== Process terminating with default action of signal 11 (SIGSEGV)
+==57847==  Access not within mapped region at address 0x0
+==57847==    at 0x402A32: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int>::copy(BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int>::Node*&, BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int>::Node const*) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.4)
+==57847==    by 0x402865: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int>::operator=(BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int> const&) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.4)
+==57847==    by 0x401E60: main (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.4)
+==57847==  If you believe this happened as a result of a stack
+==57847==  overflow in your program's main thread (unlikely but
+==57847==  possible), you can try to increase the size of the
+==57847==  main thread stack using the --main-stacksize= flag.
+==57847==  The main thread stack size used in this run was 8388608.
+==57847== 
+==57847== HEAP SUMMARY:
+==57847==     in use at exit: 72,736 bytes in 3 blocks
+==57847==   total heap usage: 318 allocs, 315 frees, 101,847 bytes allocated
+==57847== 
+==57847== LEAK SUMMARY:
+==57847==    definitely lost: 0 bytes in 0 blocks
+==57847==    indirectly lost: 0 bytes in 0 blocks
+==57847==      possibly lost: 0 bytes in 0 blocks
+==57847==    still reachable: 32 bytes in 2 blocks
+==57847==         suppressed: 72,704 bytes in 1 blocks
+==57847== Reachable blocks (those to which a pointer was found) are not shown.
+==57847== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==57847== 
+==57847== For counts of detected and suppressed errors, rerun with: -v
+==57847== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 -----------------------------------------------
 testcase 5 : Testing with BstMap<std::string,std::string>
 ...compiling...
-In file included from 89-tester.cpp:1:0:
-bstmap.h: In instantiation of ‘BstMap<K, V>& BstMap<K, V>::operator=(const BstMap<K, V>&) [with K = std::__cxx11::basic_string<char>; V = std::__cxx11::basic_string<char>]’:
-89-tester.cpp:131:7:   required from here
-bstmap.h:34:12: error: no match for ‘operator!=’ (operand types are ‘BstMap<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >*’ and ‘const BstMap<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >’)
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/locale_facets.h:48:0,
-                 from /usr/include/c++/5/bits/basic_ios.h:37,
-                 from /usr/include/c++/5/ios:44,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/streambuf_iterator.h:210:5: note: candidate: template<class _CharT, class _Traits> bool std::operator!=(const std::istreambuf_iterator<_CharT, _Traits>&, const std::istreambuf_iterator<_CharT, _Traits>&)
-     operator!=(const istreambuf_iterator<_CharT, _Traits>& __a,
-     ^
-/usr/include/c++/5/bits/streambuf_iterator.h:210:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::istreambuf_iterator<_CharT, _Traits>’ and ‘BstMap<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/string:52:0,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/basic_string.h:4974:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, const _CharT*)
-     operator!=(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
-     ^
-/usr/include/c++/5/bits/basic_string.h:4974:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>’ and ‘BstMap<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/string:52:0,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/basic_string.h:4962:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const _CharT*, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)
-     operator!=(const _CharT* __lhs,
-     ^
-/usr/include/c++/5/bits/basic_string.h:4962:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   ‘const BstMap<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >’ is not derived from ‘const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/string:52:0,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/basic_string.h:4950:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)
-     operator!=(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
-     ^
-/usr/include/c++/5/bits/basic_string.h:4950:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>’ and ‘BstMap<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/string:41:0,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/allocator.h:146:5: note: candidate: template<class _Tp> bool std::operator!=(const std::allocator<_CharT>&, const std::allocator<_CharT>&)
-     operator!=(const allocator<_Tp>&, const allocator<_Tp>&)
-     ^
-/usr/include/c++/5/bits/allocator.h:146:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::allocator<_CharT>’ and ‘BstMap<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/string:41:0,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/allocator.h:140:5: note: candidate: template<class _T1, class _T2> bool std::operator!=(const std::allocator<_CharT>&, const std::allocator<_T2>&)
-     operator!=(const allocator<_T1>&, const allocator<_T2>&)
-     ^
-/usr/include/c++/5/bits/allocator.h:140:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::allocator<_CharT>’ and ‘BstMap<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/stl_algobase.h:67:0,
-                 from /usr/include/c++/5/bits/char_traits.h:39,
-                 from /usr/include/c++/5/ios:40,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/stl_iterator.h:354:5: note: candidate: template<class _IteratorL, class _IteratorR> bool std::operator!=(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)
-     operator!=(const reverse_iterator<_IteratorL>& __x,
-     ^
-/usr/include/c++/5/bits/stl_iterator.h:354:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::reverse_iterator<_Iterator>’ and ‘BstMap<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/stl_algobase.h:67:0,
-                 from /usr/include/c++/5/bits/char_traits.h:39,
-                 from /usr/include/c++/5/ios:40,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/stl_iterator.h:304:5: note: candidate: template<class _Iterator> bool std::operator!=(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_Iterator>&)
-     operator!=(const reverse_iterator<_Iterator>& __x,
-     ^
-/usr/include/c++/5/bits/stl_iterator.h:304:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::reverse_iterator<_Iterator>’ and ‘BstMap<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/stl_algobase.h:64:0,
-                 from /usr/include/c++/5/bits/char_traits.h:39,
-                 from /usr/include/c++/5/ios:40,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/stl_pair.h:227:5: note: candidate: template<class _T1, class _T2> bool std::operator!=(const std::pair<_T1, _T2>&, const std::pair<_T1, _T2>&)
-     operator!=(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y)
-     ^
-/usr/include/c++/5/bits/stl_pair.h:227:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::pair<_T1, _T2>’ and ‘BstMap<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/iosfwd:40:0,
-                 from /usr/include/c++/5/ios:38,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/postypes.h:221:5: note: candidate: template<class _StateT> bool std::operator!=(const std::fpos<_StateT>&, const std::fpos<_StateT>&)
-     operator!=(const fpos<_StateT>& __lhs, const fpos<_StateT>& __rhs)
-     ^
-/usr/include/c++/5/bits/postypes.h:221:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::fpos<_StateT>’ and ‘BstMap<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/x86_64-linux-gnu/c++/5/bits/c++allocator.h:33:0,
-                 from /usr/include/c++/5/bits/allocator.h:46,
-                 from /usr/include/c++/5/string:41,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/ext/new_allocator.h:144:5: note: candidate: template<class _Tp> bool __gnu_cxx::operator!=(const __gnu_cxx::new_allocator<_Tp>&, const __gnu_cxx::new_allocator<_Tp>&)
-     operator!=(const new_allocator<_Tp>&, const new_allocator<_Tp>&)
-     ^
-/usr/include/c++/5/ext/new_allocator.h:144:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const __gnu_cxx::new_allocator<_Tp>’ and ‘BstMap<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/stl_algobase.h:67:0,
-                 from /usr/include/c++/5/bits/char_traits.h:39,
-                 from /usr/include/c++/5/ios:40,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/stl_iterator.h:841:5: note: candidate: template<class _Iterator, class _Container> bool __gnu_cxx::operator!=(const __gnu_cxx::__normal_iterator<_Iterator, _Container>&, const __gnu_cxx::__normal_iterator<_Iterator, _Container>&)
-     operator!=(const __normal_iterator<_Iterator, _Container>& __lhs,
-     ^
-/usr/include/c++/5/bits/stl_iterator.h:841:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const __gnu_cxx::__normal_iterator<_Iterator, _Container>’ and ‘BstMap<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/stl_algobase.h:67:0,
-                 from /usr/include/c++/5/bits/char_traits.h:39,
-                 from /usr/include/c++/5/ios:40,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/stl_iterator.h:834:5: note: candidate: template<class _IteratorL, class _IteratorR, class _Container> bool __gnu_cxx::operator!=(const __gnu_cxx::__normal_iterator<_IteratorL, _Container>&, const __gnu_cxx::__normal_iterator<_IteratorR, _Container>&)
-     operator!=(const __normal_iterator<_IteratorL, _Container>& __lhs,
-     ^
-/usr/include/c++/5/bits/stl_iterator.h:834:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const __gnu_cxx::__normal_iterator<_IteratorL, _Container>’ and ‘BstMap<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-bstmap.h:38:3: error: no return statement in function returning non-void [-Werror=return-type]
-   };
-   ^
-cc1plus: all warnings being treated as errors
-The code did not compile.  This test failed.
+The code compiled.
+  - Valgrind reported errors
+Valgrind reported errors (test failed).
+==57867== Memcheck, a memory error detector
+==57867== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==57867== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==57867== Command: ./test.5
+==57867== Parent PID: 57866
+==57867== 
+==57867== Invalid read of size 8
+==57867==    at 0x402BFC: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::copy(BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::Node*&, BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::Node const*) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.5)
+==57867==    by 0x4029FD: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::operator=(BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.5)
+==57867==    by 0x401ED9: main (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.5)
+==57867==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==57867== 
+==57867== 
+==57867== Process terminating with default action of signal 11 (SIGSEGV)
+==57867==  Access not within mapped region at address 0x0
+==57867==    at 0x402BFC: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::copy(BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::Node*&, BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::Node const*) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.5)
+==57867==    by 0x4029FD: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::operator=(BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.5)
+==57867==    by 0x401ED9: main (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.5)
+==57867==  If you believe this happened as a result of a stack
+==57867==  overflow in your program's main thread (unlikely but
+==57867==  possible), you can try to increase the size of the
+==57867==  main thread stack using the --main-stacksize= flag.
+==57867==  The main thread stack size used in this run was 8388608.
+==57867== 
+==57867== HEAP SUMMARY:
+==57867==     in use at exit: 72,736 bytes in 3 blocks
+==57867==   total heap usage: 505 allocs, 502 frees, 107,420 bytes allocated
+==57867== 
+==57867== LEAK SUMMARY:
+==57867==    definitely lost: 0 bytes in 0 blocks
+==57867==    indirectly lost: 0 bytes in 0 blocks
+==57867==      possibly lost: 0 bytes in 0 blocks
+==57867==    still reachable: 32 bytes in 2 blocks
+==57867==         suppressed: 72,704 bytes in 1 blocks
+==57867== Reachable blocks (those to which a pointer was found) are not shown.
+==57867== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==57867== 
+==57867== For counts of detected and suppressed errors, rerun with: -v
+==57867== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 -----------------------------------------------
 testcase 6 : Testing with BstMap<std::string,(a custom class we wrote)>
 ...compiling...
-In file included from 89-tester.cpp:1:0:
-bstmap.h: In instantiation of ‘BstMap<K, V>& BstMap<K, V>::operator=(const BstMap<K, V>&) [with K = std::__cxx11::basic_string<char>; V = Tester]’:
-89-tester.cpp:131:7:   required from here
-bstmap.h:34:12: error: no match for ‘operator!=’ (operand types are ‘BstMap<std::__cxx11::basic_string<char>, Tester>*’ and ‘const BstMap<std::__cxx11::basic_string<char>, Tester>’)
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/locale_facets.h:48:0,
-                 from /usr/include/c++/5/bits/basic_ios.h:37,
-                 from /usr/include/c++/5/ios:44,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/streambuf_iterator.h:210:5: note: candidate: template<class _CharT, class _Traits> bool std::operator!=(const std::istreambuf_iterator<_CharT, _Traits>&, const std::istreambuf_iterator<_CharT, _Traits>&)
-     operator!=(const istreambuf_iterator<_CharT, _Traits>& __a,
-     ^
-/usr/include/c++/5/bits/streambuf_iterator.h:210:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::istreambuf_iterator<_CharT, _Traits>’ and ‘BstMap<std::__cxx11::basic_string<char>, Tester>*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/string:52:0,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/basic_string.h:4974:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, const _CharT*)
-     operator!=(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
-     ^
-/usr/include/c++/5/bits/basic_string.h:4974:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>’ and ‘BstMap<std::__cxx11::basic_string<char>, Tester>*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/string:52:0,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/basic_string.h:4962:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const _CharT*, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)
-     operator!=(const _CharT* __lhs,
-     ^
-/usr/include/c++/5/bits/basic_string.h:4962:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   ‘const BstMap<std::__cxx11::basic_string<char>, Tester>’ is not derived from ‘const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/string:52:0,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/basic_string.h:4950:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)
-     operator!=(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
-     ^
-/usr/include/c++/5/bits/basic_string.h:4950:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>’ and ‘BstMap<std::__cxx11::basic_string<char>, Tester>*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/string:41:0,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/allocator.h:146:5: note: candidate: template<class _Tp> bool std::operator!=(const std::allocator<_CharT>&, const std::allocator<_CharT>&)
-     operator!=(const allocator<_Tp>&, const allocator<_Tp>&)
-     ^
-/usr/include/c++/5/bits/allocator.h:146:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::allocator<_CharT>’ and ‘BstMap<std::__cxx11::basic_string<char>, Tester>*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/string:41:0,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/allocator.h:140:5: note: candidate: template<class _T1, class _T2> bool std::operator!=(const std::allocator<_CharT>&, const std::allocator<_T2>&)
-     operator!=(const allocator<_T1>&, const allocator<_T2>&)
-     ^
-/usr/include/c++/5/bits/allocator.h:140:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::allocator<_CharT>’ and ‘BstMap<std::__cxx11::basic_string<char>, Tester>*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/stl_algobase.h:67:0,
-                 from /usr/include/c++/5/bits/char_traits.h:39,
-                 from /usr/include/c++/5/ios:40,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/stl_iterator.h:354:5: note: candidate: template<class _IteratorL, class _IteratorR> bool std::operator!=(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)
-     operator!=(const reverse_iterator<_IteratorL>& __x,
-     ^
-/usr/include/c++/5/bits/stl_iterator.h:354:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::reverse_iterator<_Iterator>’ and ‘BstMap<std::__cxx11::basic_string<char>, Tester>*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/stl_algobase.h:67:0,
-                 from /usr/include/c++/5/bits/char_traits.h:39,
-                 from /usr/include/c++/5/ios:40,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/stl_iterator.h:304:5: note: candidate: template<class _Iterator> bool std::operator!=(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_Iterator>&)
-     operator!=(const reverse_iterator<_Iterator>& __x,
-     ^
-/usr/include/c++/5/bits/stl_iterator.h:304:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::reverse_iterator<_Iterator>’ and ‘BstMap<std::__cxx11::basic_string<char>, Tester>*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/stl_algobase.h:64:0,
-                 from /usr/include/c++/5/bits/char_traits.h:39,
-                 from /usr/include/c++/5/ios:40,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/stl_pair.h:227:5: note: candidate: template<class _T1, class _T2> bool std::operator!=(const std::pair<_T1, _T2>&, const std::pair<_T1, _T2>&)
-     operator!=(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y)
-     ^
-/usr/include/c++/5/bits/stl_pair.h:227:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::pair<_T1, _T2>’ and ‘BstMap<std::__cxx11::basic_string<char>, Tester>*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/iosfwd:40:0,
-                 from /usr/include/c++/5/ios:38,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/postypes.h:221:5: note: candidate: template<class _StateT> bool std::operator!=(const std::fpos<_StateT>&, const std::fpos<_StateT>&)
-     operator!=(const fpos<_StateT>& __lhs, const fpos<_StateT>& __rhs)
-     ^
-/usr/include/c++/5/bits/postypes.h:221:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::fpos<_StateT>’ and ‘BstMap<std::__cxx11::basic_string<char>, Tester>*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/x86_64-linux-gnu/c++/5/bits/c++allocator.h:33:0,
-                 from /usr/include/c++/5/bits/allocator.h:46,
-                 from /usr/include/c++/5/string:41,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/ext/new_allocator.h:144:5: note: candidate: template<class _Tp> bool __gnu_cxx::operator!=(const __gnu_cxx::new_allocator<_Tp>&, const __gnu_cxx::new_allocator<_Tp>&)
-     operator!=(const new_allocator<_Tp>&, const new_allocator<_Tp>&)
-     ^
-/usr/include/c++/5/ext/new_allocator.h:144:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const __gnu_cxx::new_allocator<_Tp>’ and ‘BstMap<std::__cxx11::basic_string<char>, Tester>*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/stl_algobase.h:67:0,
-                 from /usr/include/c++/5/bits/char_traits.h:39,
-                 from /usr/include/c++/5/ios:40,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/stl_iterator.h:841:5: note: candidate: template<class _Iterator, class _Container> bool __gnu_cxx::operator!=(const __gnu_cxx::__normal_iterator<_Iterator, _Container>&, const __gnu_cxx::__normal_iterator<_Iterator, _Container>&)
-     operator!=(const __normal_iterator<_Iterator, _Container>& __lhs,
-     ^
-/usr/include/c++/5/bits/stl_iterator.h:841:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const __gnu_cxx::__normal_iterator<_Iterator, _Container>’ and ‘BstMap<std::__cxx11::basic_string<char>, Tester>*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/stl_algobase.h:67:0,
-                 from /usr/include/c++/5/bits/char_traits.h:39,
-                 from /usr/include/c++/5/ios:40,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/stl_iterator.h:834:5: note: candidate: template<class _IteratorL, class _IteratorR, class _Container> bool __gnu_cxx::operator!=(const __gnu_cxx::__normal_iterator<_IteratorL, _Container>&, const __gnu_cxx::__normal_iterator<_IteratorR, _Container>&)
-     operator!=(const __normal_iterator<_IteratorL, _Container>& __lhs,
-     ^
-/usr/include/c++/5/bits/stl_iterator.h:834:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const __gnu_cxx::__normal_iterator<_IteratorL, _Container>’ and ‘BstMap<std::__cxx11::basic_string<char>, Tester>*’
-     if(this!=rhs){
-            ^
-bstmap.h:38:3: error: no return statement in function returning non-void [-Werror=return-type]
-   };
-   ^
-cc1plus: all warnings being treated as errors
-The code did not compile.  This test failed.
+The code compiled.
+  - Valgrind reported errors
+Valgrind reported errors (test failed).
+==57876== Memcheck, a memory error detector
+==57876== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==57876== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==57876== Command: ./test.6
+==57876== Parent PID: 57875
+==57876== 
+==57876== Invalid read of size 8
+==57876==    at 0x402C56: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, Tester>::copy(BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, Tester>::Node*&, BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, Tester>::Node const*) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.6)
+==57876==    by 0x402A57: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, Tester>::operator=(BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, Tester> const&) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.6)
+==57876==    by 0x401ED9: main (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.6)
+==57876==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==57876== 
+==57876== 
+==57876== Process terminating with default action of signal 11 (SIGSEGV)
+==57876==  Access not within mapped region at address 0x0
+==57876==    at 0x402C56: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, Tester>::copy(BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, Tester>::Node*&, BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, Tester>::Node const*) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.6)
+==57876==    by 0x402A57: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, Tester>::operator=(BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, Tester> const&) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.6)
+==57876==    by 0x401ED9: main (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.6)
+==57876==  If you believe this happened as a result of a stack
+==57876==  overflow in your program's main thread (unlikely but
+==57876==  possible), you can try to increase the size of the
+==57876==  main thread stack using the --main-stacksize= flag.
+==57876==  The main thread stack size used in this run was 8388608.
+==57876== 
+==57876== HEAP SUMMARY:
+==57876==     in use at exit: 72,736 bytes in 3 blocks
+==57876==   total heap usage: 531 allocs, 528 frees, 108,520 bytes allocated
+==57876== 
+==57876== LEAK SUMMARY:
+==57876==    definitely lost: 0 bytes in 0 blocks
+==57876==    indirectly lost: 0 bytes in 0 blocks
+==57876==      possibly lost: 0 bytes in 0 blocks
+==57876==    still reachable: 32 bytes in 2 blocks
+==57876==         suppressed: 72,704 bytes in 1 blocks
+==57876== Reachable blocks (those to which a pointer was found) are not shown.
+==57876== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==57876== 
+==57876== For counts of detected and suppressed errors, rerun with: -v
+==57876== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 -----------------------------------------------
 testcase 7 : Testing with BstMap<(a custom class we wrote),int>
 ...compiling...
-In file included from 89-tester.cpp:1:0:
-bstmap.h: In instantiation of ‘BstMap<K, V>& BstMap<K, V>::operator=(const BstMap<K, V>&) [with K = Tester; V = int]’:
-89-tester.cpp:131:7:   required from here
-bstmap.h:34:12: error: no match for ‘operator!=’ (operand types are ‘BstMap<Tester, int>*’ and ‘const BstMap<Tester, int>’)
-     if(this!=rhs){
-            ^
-bstmap.h:38:3: error: no return statement in function returning non-void [-Werror=return-type]
-   };
-   ^
-cc1plus: all warnings being treated as errors
-The code did not compile.  This test failed.
+The code compiled.
+  - Valgrind reported errors
+Valgrind reported errors (test failed).
+==57888== Memcheck, a memory error detector
+==57888== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==57888== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==57888== Command: ./test.7
+==57888== Parent PID: 57887
+==57888== 
+==57888== Invalid read of size 8
+==57888==    at 0x402A9A: BstMap<Tester, int>::copy(BstMap<Tester, int>::Node*&, BstMap<Tester, int>::Node const*) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.7)
+==57888==    by 0x4028CD: BstMap<Tester, int>::operator=(BstMap<Tester, int> const&) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.7)
+==57888==    by 0x401DE0: main (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.7)
+==57888==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==57888== 
+==57888== 
+==57888== Process terminating with default action of signal 11 (SIGSEGV)
+==57888==  Access not within mapped region at address 0x0
+==57888==    at 0x402A9A: BstMap<Tester, int>::copy(BstMap<Tester, int>::Node*&, BstMap<Tester, int>::Node const*) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.7)
+==57888==    by 0x4028CD: BstMap<Tester, int>::operator=(BstMap<Tester, int> const&) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.7)
+==57888==    by 0x401DE0: main (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.7)
+==57888==  If you believe this happened as a result of a stack
+==57888==  overflow in your program's main thread (unlikely but
+==57888==  possible), you can try to increase the size of the
+==57888==  main thread stack using the --main-stacksize= flag.
+==57888==  The main thread stack size used in this run was 8388608.
+==57888== 
+==57888== HEAP SUMMARY:
+==57888==     in use at exit: 72,736 bytes in 3 blocks
+==57888==   total heap usage: 327 allocs, 324 frees, 102,550 bytes allocated
+==57888== 
+==57888== LEAK SUMMARY:
+==57888==    definitely lost: 0 bytes in 0 blocks
+==57888==    indirectly lost: 0 bytes in 0 blocks
+==57888==      possibly lost: 0 bytes in 0 blocks
+==57888==    still reachable: 32 bytes in 2 blocks
+==57888==         suppressed: 72,704 bytes in 1 blocks
+==57888== Reachable blocks (those to which a pointer was found) are not shown.
+==57888== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==57888== 
+==57888== For counts of detected and suppressed errors, rerun with: -v
+==57888== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 -----------------------------------------------
 testcase 8 : Testing with BstMap<(a custom class we wrote),std::string>
 ...compiling...
-In file included from 89-tester.cpp:1:0:
-bstmap.h: In instantiation of ‘BstMap<K, V>& BstMap<K, V>::operator=(const BstMap<K, V>&) [with K = Tester; V = std::__cxx11::basic_string<char>]’:
-89-tester.cpp:131:7:   required from here
-bstmap.h:34:12: error: no match for ‘operator!=’ (operand types are ‘BstMap<Tester, std::__cxx11::basic_string<char> >*’ and ‘const BstMap<Tester, std::__cxx11::basic_string<char> >’)
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/locale_facets.h:48:0,
-                 from /usr/include/c++/5/bits/basic_ios.h:37,
-                 from /usr/include/c++/5/ios:44,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/streambuf_iterator.h:210:5: note: candidate: template<class _CharT, class _Traits> bool std::operator!=(const std::istreambuf_iterator<_CharT, _Traits>&, const std::istreambuf_iterator<_CharT, _Traits>&)
-     operator!=(const istreambuf_iterator<_CharT, _Traits>& __a,
-     ^
-/usr/include/c++/5/bits/streambuf_iterator.h:210:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::istreambuf_iterator<_CharT, _Traits>’ and ‘BstMap<Tester, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/string:52:0,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/basic_string.h:4974:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, const _CharT*)
-     operator!=(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
-     ^
-/usr/include/c++/5/bits/basic_string.h:4974:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>’ and ‘BstMap<Tester, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/string:52:0,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/basic_string.h:4962:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const _CharT*, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)
-     operator!=(const _CharT* __lhs,
-     ^
-/usr/include/c++/5/bits/basic_string.h:4962:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   ‘const BstMap<Tester, std::__cxx11::basic_string<char> >’ is not derived from ‘const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/string:52:0,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/basic_string.h:4950:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)
-     operator!=(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
-     ^
-/usr/include/c++/5/bits/basic_string.h:4950:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>’ and ‘BstMap<Tester, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/string:41:0,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/allocator.h:146:5: note: candidate: template<class _Tp> bool std::operator!=(const std::allocator<_CharT>&, const std::allocator<_CharT>&)
-     operator!=(const allocator<_Tp>&, const allocator<_Tp>&)
-     ^
-/usr/include/c++/5/bits/allocator.h:146:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::allocator<_CharT>’ and ‘BstMap<Tester, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/string:41:0,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/allocator.h:140:5: note: candidate: template<class _T1, class _T2> bool std::operator!=(const std::allocator<_CharT>&, const std::allocator<_T2>&)
-     operator!=(const allocator<_T1>&, const allocator<_T2>&)
-     ^
-/usr/include/c++/5/bits/allocator.h:140:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::allocator<_CharT>’ and ‘BstMap<Tester, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/stl_algobase.h:67:0,
-                 from /usr/include/c++/5/bits/char_traits.h:39,
-                 from /usr/include/c++/5/ios:40,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/stl_iterator.h:354:5: note: candidate: template<class _IteratorL, class _IteratorR> bool std::operator!=(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)
-     operator!=(const reverse_iterator<_IteratorL>& __x,
-     ^
-/usr/include/c++/5/bits/stl_iterator.h:354:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::reverse_iterator<_Iterator>’ and ‘BstMap<Tester, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/stl_algobase.h:67:0,
-                 from /usr/include/c++/5/bits/char_traits.h:39,
-                 from /usr/include/c++/5/ios:40,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/stl_iterator.h:304:5: note: candidate: template<class _Iterator> bool std::operator!=(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_Iterator>&)
-     operator!=(const reverse_iterator<_Iterator>& __x,
-     ^
-/usr/include/c++/5/bits/stl_iterator.h:304:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::reverse_iterator<_Iterator>’ and ‘BstMap<Tester, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/stl_algobase.h:64:0,
-                 from /usr/include/c++/5/bits/char_traits.h:39,
-                 from /usr/include/c++/5/ios:40,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/stl_pair.h:227:5: note: candidate: template<class _T1, class _T2> bool std::operator!=(const std::pair<_T1, _T2>&, const std::pair<_T1, _T2>&)
-     operator!=(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y)
-     ^
-/usr/include/c++/5/bits/stl_pair.h:227:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::pair<_T1, _T2>’ and ‘BstMap<Tester, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/iosfwd:40:0,
-                 from /usr/include/c++/5/ios:38,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/postypes.h:221:5: note: candidate: template<class _StateT> bool std::operator!=(const std::fpos<_StateT>&, const std::fpos<_StateT>&)
-     operator!=(const fpos<_StateT>& __lhs, const fpos<_StateT>& __rhs)
-     ^
-/usr/include/c++/5/bits/postypes.h:221:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const std::fpos<_StateT>’ and ‘BstMap<Tester, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/x86_64-linux-gnu/c++/5/bits/c++allocator.h:33:0,
-                 from /usr/include/c++/5/bits/allocator.h:46,
-                 from /usr/include/c++/5/string:41,
-                 from /usr/include/c++/5/bits/locale_classes.h:40,
-                 from /usr/include/c++/5/bits/ios_base.h:41,
-                 from /usr/include/c++/5/ios:42,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/ext/new_allocator.h:144:5: note: candidate: template<class _Tp> bool __gnu_cxx::operator!=(const __gnu_cxx::new_allocator<_Tp>&, const __gnu_cxx::new_allocator<_Tp>&)
-     operator!=(const new_allocator<_Tp>&, const new_allocator<_Tp>&)
-     ^
-/usr/include/c++/5/ext/new_allocator.h:144:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const __gnu_cxx::new_allocator<_Tp>’ and ‘BstMap<Tester, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/stl_algobase.h:67:0,
-                 from /usr/include/c++/5/bits/char_traits.h:39,
-                 from /usr/include/c++/5/ios:40,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/stl_iterator.h:841:5: note: candidate: template<class _Iterator, class _Container> bool __gnu_cxx::operator!=(const __gnu_cxx::__normal_iterator<_Iterator, _Container>&, const __gnu_cxx::__normal_iterator<_Iterator, _Container>&)
-     operator!=(const __normal_iterator<_Iterator, _Container>& __lhs,
-     ^
-/usr/include/c++/5/bits/stl_iterator.h:841:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const __gnu_cxx::__normal_iterator<_Iterator, _Container>’ and ‘BstMap<Tester, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-In file included from /usr/include/c++/5/bits/stl_algobase.h:67:0,
-                 from /usr/include/c++/5/bits/char_traits.h:39,
-                 from /usr/include/c++/5/ios:40,
-                 from /usr/include/c++/5/ostream:38,
-                 from /usr/include/c++/5/iostream:39,
-                 from bstmap.h:3,
-                 from 89-tester.cpp:1:
-/usr/include/c++/5/bits/stl_iterator.h:834:5: note: candidate: template<class _IteratorL, class _IteratorR, class _Container> bool __gnu_cxx::operator!=(const __gnu_cxx::__normal_iterator<_IteratorL, _Container>&, const __gnu_cxx::__normal_iterator<_IteratorR, _Container>&)
-     operator!=(const __normal_iterator<_IteratorL, _Container>& __lhs,
-     ^
-/usr/include/c++/5/bits/stl_iterator.h:834:5: note:   template argument deduction/substitution failed:
-In file included from 89-tester.cpp:1:0:
-bstmap.h:34:12: note:   mismatched types ‘const __gnu_cxx::__normal_iterator<_IteratorL, _Container>’ and ‘BstMap<Tester, std::__cxx11::basic_string<char> >*’
-     if(this!=rhs){
-            ^
-bstmap.h:38:3: error: no return statement in function returning non-void [-Werror=return-type]
-   };
-   ^
-cc1plus: all warnings being treated as errors
-The code did not compile.  This test failed.
+The code compiled.
+  - Valgrind reported errors
+Valgrind reported errors (test failed).
+==57901== Memcheck, a memory error detector
+==57901== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==57901== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==57901== Command: ./test.8
+==57901== Parent PID: 57900
+==57901== 
+==57901== Invalid read of size 8
+==57901==    at 0x402C64: BstMap<Tester, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::copy(BstMap<Tester, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::Node*&, BstMap<Tester, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::Node const*) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.8)
+==57901==    by 0x402A65: BstMap<Tester, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::operator=(BstMap<Tester, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.8)
+==57901==    by 0x401E59: main (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.8)
+==57901==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==57901== 
+==57901== 
+==57901== Process terminating with default action of signal 11 (SIGSEGV)
+==57901==  Access not within mapped region at address 0x0
+==57901==    at 0x402C64: BstMap<Tester, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::copy(BstMap<Tester, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::Node*&, BstMap<Tester, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::Node const*) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.8)
+==57901==    by 0x402A65: BstMap<Tester, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::operator=(BstMap<Tester, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.8)
+==57901==    by 0x401E59: main (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.8)
+==57901==  If you believe this happened as a result of a stack
+==57901==  overflow in your program's main thread (unlikely but
+==57901==  possible), you can try to increase the size of the
+==57901==  main thread stack using the --main-stacksize= flag.
+==57901==  The main thread stack size used in this run was 8388608.
+==57901== 
+==57901== HEAP SUMMARY:
+==57901==     in use at exit: 72,736 bytes in 3 blocks
+==57901==   total heap usage: 509 allocs, 506 frees, 107,968 bytes allocated
+==57901== 
+==57901== LEAK SUMMARY:
+==57901==    definitely lost: 0 bytes in 0 blocks
+==57901==    indirectly lost: 0 bytes in 0 blocks
+==57901==      possibly lost: 0 bytes in 0 blocks
+==57901==    still reachable: 32 bytes in 2 blocks
+==57901==         suppressed: 72,704 bytes in 1 blocks
+==57901== Reachable blocks (those to which a pointer was found) are not shown.
+==57901== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==57901== 
+==57901== For counts of detected and suppressed errors, rerun with: -v
+==57901== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 -----------------------------------------------
 testcase 9 : Testing with BstMap<(a custom class we wrote),(a custom class we wrote)>
 ...compiling...
-In file included from 89-tester.cpp:1:0:
-bstmap.h: In instantiation of ‘BstMap<K, V>& BstMap<K, V>::operator=(const BstMap<K, V>&) [with K = Tester; V = Tester]’:
-89-tester.cpp:131:7:   required from here
-bstmap.h:34:12: error: no match for ‘operator!=’ (operand types are ‘BstMap<Tester, Tester>*’ and ‘const BstMap<Tester, Tester>’)
-     if(this!=rhs){
-            ^
-bstmap.h:38:3: error: no return statement in function returning non-void [-Werror=return-type]
-   };
-   ^
-cc1plus: all warnings being treated as errors
-The code did not compile.  This test failed.
+The code compiled.
+  - Valgrind reported errors
+Valgrind reported errors (test failed).
+==57910== Memcheck, a memory error detector
+==57910== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==57910== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==57910== Command: ./test.9
+==57910== Parent PID: 57909
+==57910== 
+==57910== Invalid read of size 8
+==57910==    at 0x402C82: BstMap<Tester, Tester>::copy(BstMap<Tester, Tester>::Node*&, BstMap<Tester, Tester>::Node const*) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.9)
+==57910==    by 0x402A77: BstMap<Tester, Tester>::operator=(BstMap<Tester, Tester> const&) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.9)
+==57910==    by 0x401E6B: main (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.9)
+==57910==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==57910== 
+==57910== 
+==57910== Process terminating with default action of signal 11 (SIGSEGV)
+==57910==  Access not within mapped region at address 0x0
+==57910==    at 0x402C82: BstMap<Tester, Tester>::copy(BstMap<Tester, Tester>::Node*&, BstMap<Tester, Tester>::Node const*) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.9)
+==57910==    by 0x402A77: BstMap<Tester, Tester>::operator=(BstMap<Tester, Tester> const&) (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.9)
+==57910==    by 0x401E6B: main (in /home/ece551db/graderbase/work/xh73.094_bst_map.Vudewq/test.9)
+==57910==  If you believe this happened as a result of a stack
+==57910==  overflow in your program's main thread (unlikely but
+==57910==  possible), you can try to increase the size of the
+==57910==  main thread stack using the --main-stacksize= flag.
+==57910==  The main thread stack size used in this run was 8388608.
+==57910== 
+==57910== HEAP SUMMARY:
+==57910==     in use at exit: 72,736 bytes in 3 blocks
+==57910==   total heap usage: 535 allocs, 532 frees, 109,068 bytes allocated
+==57910== 
+==57910== LEAK SUMMARY:
+==57910==    definitely lost: 0 bytes in 0 blocks
+==57910==    indirectly lost: 0 bytes in 0 blocks
+==57910==      possibly lost: 0 bytes in 0 blocks
+==57910==    still reachable: 32 bytes in 2 blocks
+==57910==         suppressed: 72,704 bytes in 1 blocks
+==57910== Reachable blocks (those to which a pointer was found) are not shown.
+==57910== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==57910== 
+==57910== For counts of detected and suppressed errors, rerun with: -v
+==57910== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 
 Overall Grade: F
