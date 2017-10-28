@@ -23,11 +23,13 @@ class BstMap: public Map<K,V>{
  BstMap():root(NULL){};
 
   void copy(Node * &current, const Node* rcurrent){
-    if(rcurrent!=NULL) current=new Node(rcurrent->k,rcurrent->v);
-    if(rcurrent->left!=NULL) copy(current->left,rcurrent->left);
-    if(rcurrent->right!=NULL) copy(current->right,rcurrent->right);
+    if(rcurrent!=NULL){
+      current=new Node(rcurrent->k,rcurrent->v);
+      if(rcurrent->left!=NULL) copy(current->left,rcurrent->left);
+      if(rcurrent->right!=NULL) copy(current->right,rcurrent->right);
+    }
   };
-  BstMap(const BstMap &rhs){
+ BstMap(const BstMap &rhs):root(NULL){
     copy(root,rhs.root);
   };
   BstMap & operator=(const BstMap &rhs){
