@@ -8,6 +8,7 @@ B
 B
 B
 D
+B
 A
 E
 D
