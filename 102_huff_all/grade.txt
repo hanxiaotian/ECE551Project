@@ -1,4 +1,4 @@
-Grading at 10/29/2017:15:28:35.584522
+Grading at 10/29/2017:15:29:21.973638
 For commit ID 0b035ec72d488ccccdf0cb5800d0b82ba340237b
 compiling
 g++ -ggdb3 -Wall -Werror -pedantic -std=gnu++98 -o compress  bitstring.o  buildTree.o  compress.o  node.o  readFreq.o
