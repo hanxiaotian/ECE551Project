@@ -1,22 +1,184 @@
-Grading at 10/29/2017:04:28:28.959187
+Grading at 10/31/2017:20:10:03.542178
 For commit ID 0754d9a06149dfbf91d005543077e1dd8ff8b8d1
 Running make
 g++ -o dedup dedup.o
 Found executable dedup
 -----------------------------------------------
 testcase 1 : ./dedup /var/dedup/d000
-  - Valgrind was clean (no errors, no memory leaks)
-Checking output:
-Testcase passed 
+  - Valgrind showed memory leaks
+Valgrind reported errors (test failed).
+==46033== Memcheck, a memory error detector
+==46033== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==46033== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==46033== Command: ./dedup /var/dedup/d000
+==46033== Parent PID: 46031
+==46033== 
+==46033== 
+==46033== HEAP SUMMARY:
+==46033==     in use at exit: 118,548 bytes in 159 blocks
+==46033==   total heap usage: 167 allocs, 8 frees, 126,708 bytes allocated
+==46033== 
+==46033== 31 bytes in 1 blocks are still reachable in loss record 1 of 5
+==46033==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==46033==    by 0x4F59498: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_mutate(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==46033==    by 0x4F5A832: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_append(char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==46033==    by 0x402A43: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const*) (basic_string.h:4824)
+==46033==    by 0x401C32: read_directory(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (dedup.cpp:76)
+==46033==    by 0x4021E2: main (dedup.cpp:112)
+==46033== 
+==46033== 4,805 bytes in 155 blocks are still reachable in loss record 2 of 5
+==46033==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==46033==    by 0x4F59498: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_mutate(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==46033==    by 0x4F5A832: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_append(char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==46033==    by 0x402A43: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const*) (basic_string.h:4824)
+==46033==    by 0x401BE7: read_directory(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (dedup.cpp:73)
+==46033==    by 0x4021E2: main (dedup.cpp:112)
+==46033== 
+==46033== 8,192 bytes in 1 blocks are still reachable in loss record 3 of 5
+==46033==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==46033==    by 0x404F69: __gnu_cxx::new_allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::allocate(unsigned long, void const*) (new_allocator.h:104)
+==46033==    by 0x404A77: std::allocator_traits<std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::allocate(std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >&, unsigned long) (alloc_traits.h:491)
+==46033==    by 0x404203: std::_Vector_base<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_allocate(unsigned long) (stl_vector.h:170)
+==46033==    by 0x4044ED: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_emplace_back_aux<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (vector.tcc:412)
+==46033==    by 0x403AD6: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::emplace_back<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (vector.tcc:101)
+==46033==    by 0x402E9F: std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::push_back(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (stl_vector.h:932)
+==46033==    by 0x401BFA: read_directory(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (dedup.cpp:73)
+==46033==    by 0x4021E2: main (dedup.cpp:112)
+==46033== 
+==46033== 32,816 bytes in 1 blocks are still reachable in loss record 4 of 5
+==46033==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==46033==    by 0x549A1B9: __alloc_dir (opendir.c:247)
+==46033==    by 0x549A1B9: opendir_tail (opendir.c:145)
+==46033==    by 0x549A1B9: opendir (opendir.c:200)
+==46033==    by 0x401B42: read_directory(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (dedup.cpp:62)
+==46033==    by 0x4021E2: main (dedup.cpp:112)
+==46033== 
+==46033== LEAK SUMMARY:
+==46033==    definitely lost: 0 bytes in 0 blocks
+==46033==    indirectly lost: 0 bytes in 0 blocks
+==46033==      possibly lost: 0 bytes in 0 blocks
+==46033==    still reachable: 45,844 bytes in 158 blocks
+==46033==         suppressed: 72,704 bytes in 1 blocks
+==46033== 
+==46033== For counts of detected and suppressed errors, rerun with: -v
+==46033== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 -----------------------------------------------
 testcase 2 : ./dedup /var/dedup/d001
-  - Valgrind was clean (no errors, no memory leaks)
-Checking output:
-Testcase passed 
+  - Valgrind showed memory leaks
+Valgrind reported errors (test failed).
+==46046== Memcheck, a memory error detector
+==46046== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==46046== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==46046== Command: ./dedup /var/dedup/d001
+==46046== Parent PID: 46044
+==46046== 
+==46046== 
+==46046== HEAP SUMMARY:
+==46046==     in use at exit: 119,044 bytes in 175 blocks
+==46046==   total heap usage: 183 allocs, 8 frees, 127,204 bytes allocated
+==46046== 
+==46046== 31 bytes in 1 blocks are still reachable in loss record 1 of 5
+==46046==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==46046==    by 0x4F59498: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_mutate(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==46046==    by 0x4F5A832: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_append(char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==46046==    by 0x402A43: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const*) (basic_string.h:4824)
+==46046==    by 0x401C32: read_directory(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (dedup.cpp:76)
+==46046==    by 0x4021E2: main (dedup.cpp:112)
+==46046== 
+==46046== 5,301 bytes in 171 blocks are still reachable in loss record 2 of 5
+==46046==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==46046==    by 0x4F59498: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_mutate(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==46046==    by 0x4F5A832: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_append(char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==46046==    by 0x402A43: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const*) (basic_string.h:4824)
+==46046==    by 0x401BE7: read_directory(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (dedup.cpp:73)
+==46046==    by 0x4021E2: main (dedup.cpp:112)
+==46046== 
+==46046== 8,192 bytes in 1 blocks are still reachable in loss record 3 of 5
+==46046==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==46046==    by 0x404F69: __gnu_cxx::new_allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::allocate(unsigned long, void const*) (new_allocator.h:104)
+==46046==    by 0x404A77: std::allocator_traits<std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::allocate(std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >&, unsigned long) (alloc_traits.h:491)
+==46046==    by 0x404203: std::_Vector_base<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_allocate(unsigned long) (stl_vector.h:170)
+==46046==    by 0x4044ED: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_emplace_back_aux<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (vector.tcc:412)
+==46046==    by 0x403AD6: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::emplace_back<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (vector.tcc:101)
+==46046==    by 0x402E9F: std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::push_back(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (stl_vector.h:932)
+==46046==    by 0x401BFA: read_directory(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (dedup.cpp:73)
+==46046==    by 0x4021E2: main (dedup.cpp:112)
+==46046== 
+==46046== 32,816 bytes in 1 blocks are still reachable in loss record 4 of 5
+==46046==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==46046==    by 0x549A1B9: __alloc_dir (opendir.c:247)
+==46046==    by 0x549A1B9: opendir_tail (opendir.c:145)
+==46046==    by 0x549A1B9: opendir (opendir.c:200)
+==46046==    by 0x401B42: read_directory(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (dedup.cpp:62)
+==46046==    by 0x4021E2: main (dedup.cpp:112)
+==46046== 
+==46046== LEAK SUMMARY:
+==46046==    definitely lost: 0 bytes in 0 blocks
+==46046==    indirectly lost: 0 bytes in 0 blocks
+==46046==      possibly lost: 0 bytes in 0 blocks
+==46046==    still reachable: 46,340 bytes in 174 blocks
+==46046==         suppressed: 72,704 bytes in 1 blocks
+==46046== 
+==46046== For counts of detected and suppressed errors, rerun with: -v
+==46046== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 -----------------------------------------------
 testcase 3 : ./dedup /var/dedup/*
-  - Valgrind was clean (no errors, no memory leaks)
-Checking output:
-Testcase passed 
+  - Valgrind showed memory leaks
+Valgrind reported errors (test failed).
+==46059== Memcheck, a memory error detector
+==46059== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==46059== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==46059== Command: ./dedup /var/dedup/d000 /var/dedup/d001 /var/dedup/d002 /var/dedup/d003 /var/dedup/d004 /var/dedup/d005 /var/dedup/d006 /var/dedup/d007 /var/dedup/d008 /var/dedup/d009
+==46059== Parent PID: 46057
+==46059== 
+==46059== 
+==46059== HEAP SUMMARY:
+==46059==     in use at exit: 118,548 bytes in 159 blocks
+==46059==   total heap usage: 167 allocs, 8 frees, 126,708 bytes allocated
+==46059== 
+==46059== 31 bytes in 1 blocks are still reachable in loss record 1 of 5
+==46059==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==46059==    by 0x4F59498: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_mutate(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==46059==    by 0x4F5A832: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_append(char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==46059==    by 0x402A43: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const*) (basic_string.h:4824)
+==46059==    by 0x401C32: read_directory(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (dedup.cpp:76)
+==46059==    by 0x4021E2: main (dedup.cpp:112)
+==46059== 
+==46059== 4,805 bytes in 155 blocks are still reachable in loss record 2 of 5
+==46059==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==46059==    by 0x4F59498: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_mutate(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==46059==    by 0x4F5A832: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_append(char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==46059==    by 0x402A43: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const*) (basic_string.h:4824)
+==46059==    by 0x401BE7: read_directory(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (dedup.cpp:73)
+==46059==    by 0x4021E2: main (dedup.cpp:112)
+==46059== 
+==46059== 8,192 bytes in 1 blocks are still reachable in loss record 3 of 5
+==46059==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==46059==    by 0x404F69: __gnu_cxx::new_allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::allocate(unsigned long, void const*) (new_allocator.h:104)
+==46059==    by 0x404A77: std::allocator_traits<std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::allocate(std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >&, unsigned long) (alloc_traits.h:491)
+==46059==    by 0x404203: std::_Vector_base<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_allocate(unsigned long) (stl_vector.h:170)
+==46059==    by 0x4044ED: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_emplace_back_aux<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (vector.tcc:412)
+==46059==    by 0x403AD6: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::emplace_back<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (vector.tcc:101)
+==46059==    by 0x402E9F: std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::push_back(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (stl_vector.h:932)
+==46059==    by 0x401BFA: read_directory(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (dedup.cpp:73)
+==46059==    by 0x4021E2: main (dedup.cpp:112)
+==46059== 
+==46059== 32,816 bytes in 1 blocks are still reachable in loss record 4 of 5
+==46059==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==46059==    by 0x549A1B9: __alloc_dir (opendir.c:247)
+==46059==    by 0x549A1B9: opendir_tail (opendir.c:145)
+==46059==    by 0x549A1B9: opendir (opendir.c:200)
+==46059==    by 0x401B42: read_directory(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (dedup.cpp:62)
+==46059==    by 0x4021E2: main (dedup.cpp:112)
+==46059== 
+==46059== LEAK SUMMARY:
+==46059==    definitely lost: 0 bytes in 0 blocks
+==46059==    indirectly lost: 0 bytes in 0 blocks
+==46059==      possibly lost: 0 bytes in 0 blocks
+==46059==    still reachable: 45,844 bytes in 158 blocks
+==46059==         suppressed: 72,704 bytes in 1 blocks
+==46059== 
+==46059== For counts of detected and suppressed errors, rerun with: -v
+==46059== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 
-Overall Grade: A
+Overall Grade: F
