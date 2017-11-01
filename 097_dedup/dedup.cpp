@@ -82,6 +82,7 @@ void read_directory(vector<string> &filenames, string path){
 void finddup(HashTable ht){
   ofstream shell("dedup.sh");
   shell<<"#!/bin/bash"<<endl;
+  shell<<endl;
   list<pair<string,string> > pairs=ht.SimilarPairs();
   for(auto iter=pairs.begin();iter!=pairs.end(); iter++){
     ifstream ifs1((*iter).first);
@@ -92,12 +93,14 @@ void finddup(HashTable ht){
     getline(ifs2,s2,(char)ifs2.eof());
     if(!s1.compare(s2)){
       shell<<"#Removing "<<(*iter).second<<" (duplicate of "<<(*iter).first<<")."<<endl;
+      shell<<endl;
       shell<<"rm "<<(*iter).second<<endl;
-      /*      for(auto iter1=iter;iter1!=pairs.end();iter1++){
+      shell<<endl;
+      for(auto iter1=iter;iter1!=pairs.end();iter1++){
 	if((*iter1).first==(*iter).second){
 	  iter1=pairs.erase(iter1);
-	  }
-	  }*/
+	}
+      }
     }
   }
 }
