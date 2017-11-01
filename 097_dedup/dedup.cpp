@@ -50,7 +50,7 @@ void check_valid(int argc, char* argv[]){
   }
   for(int i=1;i<argc;i++){
     struct stat sb;
-    if(!(stat(argv[i],&sb)==0 && S_ISDIR(sb.st_mode))){
+    if(!(stat(argv[i],&sb)==0 && (S_ISDIR(sb.st_mode)||S_ISREG(sb.st_mode)))){
       cerr<<"invalid directory path:"<<argv[i]<<endl;
       exit(1);
     }
@@ -79,10 +79,9 @@ void read_directory(vector<string> &filenames, string path){
   closedir(dir);
 }
 
-void finddup(HashTable ht){
-  ofstream shell("dedup.sh");
+void finddup(HashTable ht,ostream &shell){
+  //ofstream shell("dedup.sh");
   shell<<"#!/bin/bash"<<endl;
-  shell<<endl;
   list<pair<string,string> > pairs=ht.SimilarPairs();
   for(auto iter=pairs.begin();iter!=pairs.end(); iter++){
     ifstream ifs1((*iter).first);
@@ -92,11 +91,8 @@ void finddup(HashTable ht){
     getline(ifs1,s1,(char)ifs1.eof());
     getline(ifs2,s2,(char)ifs2.eof());
     if(!s1.compare(s2)){
-      shell<<"#Removing "<<(*iter).second<<" (duplicate of "<<endl;
-      shell<<(*iter).first<<")."<<endl;
-      shell<<endl;
+      shell<<"#Removing "<<(*iter).second<<" (duplicate of "<<(*iter).first<<")."<<endl;
       shell<<"rm "<<(*iter).second<<endl;
-      shell<<endl;
       for(auto iter1=iter;iter1!=pairs.end();iter1++){
 	if((*iter1).first==(*iter).second){
 	  iter1=pairs.erase(iter1);
@@ -122,6 +118,6 @@ int main(int argc, char * argv[]){
     getline(ifs,s,(char)ifs.eof());
     ht.add(s,*iter);
   }
-  finddup(ht);
+  finddup(ht,cout);
   return EXIT_SUCCESS;
 }
