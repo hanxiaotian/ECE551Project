@@ -92,7 +92,8 @@ void finddup(HashTable ht){
     getline(ifs1,s1,(char)ifs1.eof());
     getline(ifs2,s2,(char)ifs2.eof());
     if(!s1.compare(s2)){
-      shell<<"#Removing "<<(*iter).second<<" (duplicate of "<<(*iter).first<<")."<<endl;
+      shell<<"#Removing "<<(*iter).second<<" (duplicate of "<<endl;
+      shell<<(*iter).first<<")."<<endl;
       shell<<endl;
       shell<<"rm "<<(*iter).second<<endl;
       shell<<endl;
