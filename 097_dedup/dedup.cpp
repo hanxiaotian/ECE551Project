@@ -93,11 +93,11 @@ void finddup(HashTable ht){
     if(!s1.compare(s2)){
       shell<<"#Removing "<<(*iter).second<<" (duplicate of "<<(*iter).first<<")."<<endl;
       shell<<"rm "<<(*iter).second<<endl;
-      for(auto iter1=iter;iter1!=pairs.end();iter1++){
+      /*      for(auto iter1=iter;iter1!=pairs.end();iter1++){
 	if((*iter1).first==(*iter).second){
 	  iter1=pairs.erase(iter1);
-	}
-      }
+	  }
+	  }*/
     }
   }
 }
