@@ -1,5 +1,5 @@
-Grading at 11/01/2017:04:27:43.735181
-For commit ID b4d1116ba2b5fb2e249ffa5514fff1f1546f6f25
+Grading at 11/01/2017:16:36:21.211478
+For commit ID aff0242ba36022317358029a2d54a82971c3ab53
 Running make
 g++ -o dedup dedup.o
 Found executable dedup
@@ -879,12 +879,12 @@ These groupings were incorrect:
 testcase 2 : ./dedup /var/dedup/d001
   - Valgrind reported errors
 Valgrind reported errors (test failed).
-==90892== Memcheck, a memory error detector
-==90892== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
-==90892== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
-==90892== Command: ./dedup /var/dedup/d001
-==90892== Parent PID: 90890
-==90892== 
+==21790== Memcheck, a memory error detector
+==21790== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==21790== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==21790== Command: ./dedup /var/dedup/d001
+==21790== Parent PID: 21788
+==21790== 
 -----------------------------------------------
 testcase 3 : ./dedup /var/dedup/*
   - Valgrind was clean (no errors, no memory leaks)
