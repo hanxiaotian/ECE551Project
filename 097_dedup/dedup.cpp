@@ -67,13 +67,13 @@ void read_directory(vector<string> &filenames, string path){
     if(strcmp(ptr->d_name,".")==0||strcmp(ptr->d_name,"..")==0)
       continue;
     else if(ptr->d_type==DT_REG){
-      /*      char buf[200];
+      char buf[200];
       getcwd(buf,sizeof(buf));
-      path=buf;*/
-      filenames.push_back(path+ptr->d_name);
+      path=buf;
+      filenames.push_back(path+'/'+ptr->d_name);
     }
     else if(ptr->d_type==DT_DIR){
-      read_directory(filenames,path+ptr->d_name);
+      read_directory(filenames,path+'/'+ptr->d_name);
     }
     else continue;
   }
