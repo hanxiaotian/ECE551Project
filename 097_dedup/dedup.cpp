@@ -50,7 +50,7 @@ void check_valid(int argc, char* argv[]){
   }
   for(int i=1;i<argc;i++){
     struct stat sb;
-    if(!(stat(argv[i],&sb)==0 && (S_ISDIR(sb.st_mode)||S_ISREG(sb.st_mode)))){
+    if(!(stat(argv[i],&sb)==0 && S_ISDIR(sb.st_mode))){
       cerr<<"invalid directory path:"<<argv[i]<<endl;
       exit(1);
     }
@@ -93,8 +93,10 @@ void finddup(HashTable ht,ostream &shell){
     if(!s1.compare(s2)){
       shell<<"#Removing "<<(*iter).second<<" (duplicate of "<<(*iter).first<<")."<<endl;
       shell<<"rm "<<(*iter).second<<endl;
-      for(auto iter1=iter;iter1!=pairs.end();iter1++){
-	if((*iter1).first==(*iter).second){
+      auto iter1=iter;
+      iter1++;
+      for(;iter1!=pairs.end();iter1++){
+	if((*iter1).first==(*iter).second || (*iter1).second==(*iter).second){
 	  iter1=pairs.erase(iter1);
 	}
       }
