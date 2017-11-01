@@ -12,6 +12,7 @@
 #include <streambuf>
 #include <algorithm>
 #include <unistd.h>
+#include <limits.h>
 
 using namespace std;
 
@@ -60,6 +61,7 @@ void read_directory(vector<string> &filenames, string path){
   DIR *dir;
   struct dirent *ptr=NULL;
   if((dir=opendir(path.c_str()))==NULL){
+    cout<<path.c_str();
     perror("Open dri error...");
     exit(1);
   }
@@ -67,9 +69,6 @@ void read_directory(vector<string> &filenames, string path){
     if(strcmp(ptr->d_name,".")==0||strcmp(ptr->d_name,"..")==0)
       continue;
     else if(ptr->d_type==DT_REG){
-      char buf[200];
-      getcwd(buf,sizeof(buf));
-      path=buf;
       filenames.push_back(path+'/'+ptr->d_name);
     }
     else if(ptr->d_type==DT_DIR){
@@ -101,15 +100,16 @@ void finddup(HashTable ht){
       }
     }
   }
-  //sort(delfiles.begin(),delfiles.end());
-  //delfiles.erase(unique(delfiles.begin(), delfiles.end()), delfiles.end());
 }
 
 int main(int argc, char * argv[]){
   check_valid(argc,argv);
   vector<string> filenames;
   for(int i=1;i<argc;i++){
-    read_directory(filenames,argv[i]);
+    char resolved_path[PATH_MAX];
+    realpath(argv[i],resolved_path);
+    string path=resolved_path;
+    read_directory(filenames,path);
   }
   HashTable ht(filenames.size());
   for(auto iter=filenames.begin();iter!=filenames.end(); iter++){
