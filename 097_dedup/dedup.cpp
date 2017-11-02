@@ -85,13 +85,6 @@ void finddup(HashTable ht,ostream &shell){
   shell<<"#!/bin/bash"<<endl;
   list<pair<string,string> > pairs=ht.SimilarPairs();
   for(auto iter=pairs.begin();iter!=pairs.end(); iter++){
-    //    ifstream ifs1((*iter).first);
-    //ifstream ifs2((*iter).second);
-    //string s1;
-    //string s2;
-    //getline(ifs1,s1,(char)ifs1.eof());
-    //getline(ifs2,s2,(char)ifs2.eof());
-    //    if(!s1.compare(s2)){
     string command="cmp -s "+(*iter).first+" "+(*iter).second;
     if(system(command.c_str())==0){
       shell<<"#Removing "<<(*iter).second<<" (duplicate of "<<(*iter).first<<")."<<endl;
