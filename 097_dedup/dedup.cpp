@@ -29,11 +29,12 @@ public:
   };
   list<pair<string,string> > SimilarPairs(){
     list<pair<string,string> > pairs;
-    for(auto it=table.begin();it!=table.end(); it++){
-      if((*it).size()>1){
-	for(size_t i=0;i<(*it).size()-1;i++){
-	  for(size_t j=i+1;j<(*it).size();j++){
-	    pair<string,string> p((*it)[i],(*it)[j]);
+    for(size_t i=0;i<table.size();i++){
+      if(table[i].size()>1){
+	//table[i].sort();
+	for(size_t j=0;j<table[i].size()-1;j++){
+	  for(size_t k=j+1;k<table[i].size();k++){
+	    pair<string,string> p(table[i][j],table[i][k]);
 	    pairs.push_back(p);
 	  }
 	}
@@ -84,13 +85,15 @@ void finddup(HashTable ht,ostream &shell){
   shell<<"#!/bin/bash"<<endl;
   list<pair<string,string> > pairs=ht.SimilarPairs();
   for(auto iter=pairs.begin();iter!=pairs.end(); iter++){
-    ifstream ifs1((*iter).first);
-    ifstream ifs2((*iter).second);
-    string s1;
-    string s2;
-    getline(ifs1,s1,(char)ifs1.eof());
-    getline(ifs2,s2,(char)ifs2.eof());
-    if(!s1.compare(s2)){
+    //    ifstream ifs1((*iter).first);
+    //ifstream ifs2((*iter).second);
+    //string s1;
+    //string s2;
+    //getline(ifs1,s1,(char)ifs1.eof());
+    //getline(ifs2,s2,(char)ifs2.eof());
+    //    if(!s1.compare(s2)){
+    string command="cmp -s "+(*iter).first+" "+(*iter).second;
+    if(system(command.c_str())==0){
       shell<<"#Removing "<<(*iter).second<<" (duplicate of "<<(*iter).first<<")."<<endl;
       shell<<"rm "<<(*iter).second<<endl;
       auto iter1=iter;
