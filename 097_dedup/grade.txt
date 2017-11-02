@@ -1,18 +1,13 @@
-Grading at 11/02/2017:19:44:00.868769
-For commit ID d6e9cb2accca51b1a6662bcf7a4fb5efe4fb4f5d
+Grading at 11/02/2017:23:08:11.610237
+For commit ID 3ab9514cc5974c9862d8647747e25ea4f9572a2a
 Running make
 g++ -o dedup dedup.o
 Found executable dedup
 -----------------------------------------------
 testcase 1 : ./dedup /var/dedup/d000
-  - Valgrind reported errors
-Valgrind reported errors (test failed).
-==83577== Memcheck, a memory error detector
-==83577== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
-==83577== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
-==83577== Command: ./dedup /var/dedup/d000
-==83577== Parent PID: 83575
-==83577== 
+  - Valgrind was clean (no errors, no memory leaks)
+Checking output:
+Testcase passed 
 -----------------------------------------------
 testcase 2 : ./dedup /var/dedup/d001
   - Valgrind was clean (no errors, no memory leaks)
@@ -20,13 +15,8 @@ Checking output:
 Testcase passed 
 -----------------------------------------------
 testcase 3 : ./dedup /var/dedup/*
-  - Valgrind reported errors
-Valgrind reported errors (test failed).
-==83739== Memcheck, a memory error detector
-==83739== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
-==83739== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
-==83739== Command: ./dedup /var/dedup/d000 /var/dedup/d001 /var/dedup/d002 /var/dedup/d003 /var/dedup/d004 /var/dedup/d005 /var/dedup/d006 /var/dedup/d007 /var/dedup/d008 /var/dedup/d009
-==83739== Parent PID: 83737
-==83739== 
+  - Valgrind was clean (no errors, no memory leaks)
+Checking output:
+Testcase passed 
 
-Overall Grade: F
+Overall Grade: A
