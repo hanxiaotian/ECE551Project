@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include <fstream>
 #include <cstdlib>
 #include <vector>
@@ -34,8 +35,9 @@ public:
     shell<<"#!/bin/bash"<<endl;
     for(auto iter=filenames.begin();iter!=filenames.end(); iter++){
       ifstream ifs(*iter,ios::binary | ios::in);
-      string s;
-      getline(ifs,s,(char)ifs.eof());
+      stringstream ss;
+      ss << ifs.rdbuf();
+      std::string s(ss.str());
       unsigned int h=hasher(s);
       h=h%table.size();
       if(table[h].size()==0){
@@ -51,7 +53,8 @@ public:
 	  table[h].push_back(*iter);
 	}
       }
-    }        
+      if(*iter=="/var/dedup/d001/acccacab") exit(0);
+    }
   };
 };
 
