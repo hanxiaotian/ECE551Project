@@ -53,7 +53,7 @@ public:
 	  table[h].push_back(*iter);
 	}
       }
-      if(*iter=="/var/dedup/d001/acccacab") exit(0);
+      if(*iter=="/var/dedup/d001/acccacab") break;
     }
   };
 };
