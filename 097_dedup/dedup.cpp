@@ -36,7 +36,7 @@ public:
   };
   string readfile(string file){
     ifstream ifs(file,ios::binary | ios::in);
-    std::string str((istreambuf_iterator<char>(ifs)),(istreambuf_iterator<char>()));
+     std::string str((istreambuf_iterator<char>(ifs)),(istreambuf_iterator<char>()));
     ifs.close();
     return str;
   };
@@ -59,7 +59,6 @@ public:
 	  table[h].push_back(*iter);
 	}
       }
-      //      if(*iter=="/var/dedup/d001/acccacab") break;
     }
   };
 };
@@ -98,7 +97,7 @@ int main(int argc, char * argv[]){
   vector<string> filenames;
   for(int i=1;i<argc;i++){
     char resolved_path[PATH_MAX];
-    realpath(argv[i],resolved_path);
+    string str=realpath(argv[i],resolved_path);
     string path=resolved_path;
     read_directory(filenames,path);
   }
