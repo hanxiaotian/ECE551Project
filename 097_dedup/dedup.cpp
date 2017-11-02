@@ -5,13 +5,10 @@
 #include <string>
 #include <list>
 #include <sys/types.h>
-#include <sys/stat.h>
 #include <dirent.h>
 #include <cstring>
 #include <functional>
-#include <streambuf>
 #include <algorithm>
-#include <unistd.h>
 #include <limits.h>
 
 using namespace std;
@@ -22,25 +19,39 @@ private:
   hash<string> hasher;
 public:
   HashTable(size_t len){table.resize(len);};
-  void add(string key,string value){
-    unsigned int h=hasher(key);
-    h=h%table.size();
-    table[h].push_back(value);
-  };
-  list<pair<string,string> > SimilarPairs(){
-    list<pair<string,string> > pairs;
-    for(size_t i=0;i<table.size();i++){
-      if(table[i].size()>1){
-	//table[i].sort();
-	for(size_t j=0;j<table[i].size()-1;j++){
-	  for(size_t k=j+1;k<table[i].size();k++){
-	    pair<string,string> p(table[i][j],table[i][k]);
-	    pairs.push_back(p);
-	  }
-	}
+  string isintable(string file,unsigned int h){
+    string str;
+    for(auto iter=table[h].begin();iter!=table[h].end();iter++){
+      string command="cmp -s "+(*iter)+" "+file;
+      if(system(command.c_str())==0){
+	str=(*iter);
+	return str;
       }
     }
-    return pairs;
+    return str;
+  };
+  void output(vector<string> &filenames,ostream &shell){
+    shell<<"#!/bin/bash"<<endl;
+    for(auto iter=filenames.begin();iter!=filenames.end(); iter++){
+      ifstream ifs(*iter,ios::binary | ios::in);
+      string s;
+      getline(ifs,s,(char)ifs.eof());
+      unsigned int h=hasher(s);
+      h=h%table.size();
+      if(table[h].size()==0){
+	table[h].push_back(*iter);
+      }
+      else{
+	string str=isintable(*iter,h);
+	if(str.length()!=0){
+	  shell<<"#Removing "<<*iter<<" (duplicate of "<<str<<")."<<endl;
+	  shell<<"rm "<<*iter<<endl;
+	}
+	else{
+	  table[h].push_back(*iter);
+	}
+      }
+    }        
   };
 };
 
@@ -48,13 +59,6 @@ void check_valid(int argc, char* argv[]){
   if(argc<2){
     cerr<<"no directory input!"<<endl;
     exit(1);
-  }
-  for(int i=1;i<argc;i++){
-    struct stat sb;
-    if(!(stat(argv[i],&sb)==0 && S_ISDIR(sb.st_mode))){
-      cerr<<"invalid directory path:"<<argv[i]<<endl;
-      exit(1);
-    }
   }
 }
 
@@ -80,26 +84,6 @@ void read_directory(vector<string> &filenames, string path){
   closedir(dir);
 }
 
-void finddup(HashTable ht,ostream &shell){
-  //ofstream shell("dedup.sh");
-  shell<<"#!/bin/bash"<<endl;
-  list<pair<string,string> > pairs=ht.SimilarPairs();
-  for(auto iter=pairs.begin();iter!=pairs.end(); iter++){
-    string command="cmp -s "+(*iter).first+" "+(*iter).second;
-    if(system(command.c_str())==0){
-      shell<<"#Removing "<<(*iter).second<<" (duplicate of "<<(*iter).first<<")."<<endl;
-      shell<<"rm "<<(*iter).second<<endl;
-      auto iter1=iter;
-      iter1++;
-      for(;iter1!=pairs.end();iter1++){
-	if((*iter1).first==(*iter).second || (*iter1).second==(*iter).second){
-	  iter1=pairs.erase(iter1);
-	}
-      }
-    }
-  }
-}
-
 int main(int argc, char * argv[]){
   check_valid(argc,argv);
   vector<string> filenames;
@@ -109,13 +93,7 @@ int main(int argc, char * argv[]){
     string path=resolved_path;
     read_directory(filenames,path);
   }
-  HashTable ht(filenames.size());
-  for(auto iter=filenames.begin();iter!=filenames.end(); iter++){
-    ifstream ifs(*iter);
-    string s;
-    getline(ifs,s,(char)ifs.eof());
-    ht.add(s,*iter);
-  }
-  finddup(ht,cout);
+  HashTable ht(filenames.size()); 
+  ht.output(filenames,cout);
   return EXIT_SUCCESS;
 }
