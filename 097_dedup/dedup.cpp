@@ -4,7 +4,6 @@
 #include <cstdlib>
 #include <vector>
 #include <string>
-#include <list>
 #include <sys/types.h>
 #include <dirent.h>
 #include <cstring>
@@ -23,21 +22,28 @@ public:
   string isintable(string file,unsigned int h){
     string str;
     for(auto iter=table[h].begin();iter!=table[h].end();iter++){
-      string command="cmp -s "+(*iter)+" "+file;
-      if(system(command.c_str())==0){
+      if(comparefile(*iter,file)){
 	str=(*iter);
 	return str;
       }
     }
     return str;
   };
+  bool comparefile(string file1,string file2){
+    string str1=readfile(file1);
+    string str2=readfile(file2);
+    return str1==str2;
+  };
+  string readfile(string file){
+    ifstream ifs(file,ios::binary | ios::in);
+    std::string str((istreambuf_iterator<char>(ifs)),(istreambuf_iterator<char>()));
+    ifs.close();
+    return str;
+  };
   void output(vector<string> &filenames,ostream &shell){
     shell<<"#!/bin/bash"<<endl;
     for(auto iter=filenames.begin();iter!=filenames.end(); iter++){
-      ifstream ifs(*iter,ios::binary | ios::in);
-      stringstream ss;
-      ss << ifs.rdbuf();
-      std::string s(ss.str());
+      string s=readfile(*iter);
       unsigned int h=hasher(s);
       h=h%table.size();
       if(table[h].size()==0){
@@ -53,7 +59,7 @@ public:
 	  table[h].push_back(*iter);
 	}
       }
-      if(*iter=="/var/dedup/d001/acccacab") break;
+      //      if(*iter=="/var/dedup/d001/acccacab") break;
     }
   };
 };
