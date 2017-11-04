@@ -3,11 +3,11 @@ AK
 AG
 AC
 AG
-AC
-AC
-AC
-AD
-AC
+C
+C
+C
+D
+C
 B
 D
 B
