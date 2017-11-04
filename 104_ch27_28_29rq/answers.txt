@@ -8,9 +8,9 @@ C
 C
 D
 C
-ZB
-ZD
-ZB
+B
+D
+B
 ZD
 ZC
 B
