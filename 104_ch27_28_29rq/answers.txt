@@ -1,8 +1,8 @@
-AB
-AK
-AG
-C
+B
+K
 G
+C
+F
 C
 C
 C
