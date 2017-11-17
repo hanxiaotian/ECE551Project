@@ -11,6 +11,8 @@
 
 using namespace std;
 
+vector<Function> functionlist;
+
 class Expression{
  public:
   virtual ~Expression(){};
@@ -18,7 +20,7 @@ class Expression{
 };
 
 //function declearation
-Expression* makeExpr(string op,vector<Expression *>& idlist,Function* fptr=NULL);
+Expression* makeExpr(string op,vector<Expression *>& idlist,Function * fptr=NULL);
 bool isValidId(string id);
 Expression* parseId(string &strp,Function* fptr=NULL);
 Expression* __parse(string &strp,Function* fptr=NULL);
