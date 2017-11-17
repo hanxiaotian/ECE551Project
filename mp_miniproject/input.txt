@@ -1,0 +1,2 @@
+define  (f x y z) = (+ (* x y) (- z 3))
+evaluate (f 3 4.2 5)
