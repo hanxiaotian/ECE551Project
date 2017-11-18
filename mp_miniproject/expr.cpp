@@ -1,5 +1,5 @@
 #include <iostream>
-#include "expr.h"
+#include "expr2.h"
 #include <ctype.h>
 #include <cstdlib>
 #include <string.h>
@@ -33,5 +33,9 @@ int main(int argc, char** argv) {
     }
   }
   fin.close();
+  //delete functions
+  for(auto iter=functionlist.begin();iter!=functionlist.end();iter++){
+    delete *iter;
+  }
   return EXIT_SUCCESS;
 }

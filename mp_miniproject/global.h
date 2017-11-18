@@ -6,6 +6,6 @@
 using namespace std;
 
 class Function;
-extern vector<Function> functionlist;
+extern vector<Function*> functionlist;
 
 #endif

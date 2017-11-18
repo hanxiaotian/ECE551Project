@@ -29,20 +29,6 @@ string gettoken(string &line);
 void skipSpace(string & line);
 int findfunc(string name);
 
-//aid class which store address of function and variable, when this object destroy, its contend dont destruct.
-class ID: public Expression{
- private:
-  Expression *value;
- public:
- ID(Expression * ptr):value(ptr){};
-  Expression * returnptr(){
-    return value;
-  };
-  virtual double evaluate() const{
-    return value->evaluate();
-  };
-};
-
 //variable class, used to store variable in function
 class Variable: public Expression{
  private:
@@ -206,11 +192,11 @@ class Pow: public Expression{
 };
 
 //function class
-class Function: public Expression{
+class Function{
  private:
   string funcname;
   vector<Variable> variables;
-  Expression * root;
+  string definition;
  public:
   //friend function declaration
   friend Expression * parseId(string &strp);
@@ -218,6 +204,10 @@ class Function: public Expression{
   //set function name
   void setname(string name){
     funcname=name;
+  };
+  //store function definition
+  void setdefinition(string line){
+    definition=line;
   };
   //return function name
   string returnname() const{
@@ -250,27 +240,20 @@ class Function: public Expression{
     variables[num].setvalue(value->evaluate());
   };
   //return the value of variable with name 
-  Variable* ReturnVariablePtr(string name){
+  double ReturnVariable(string name){
     if(!check_exist(name)){
       cerr<<"variable name not mathc"<<endl;
       exit(0);
     }
     for(auto iter=variables.begin();iter<variables.end();iter++){
-      if(name==iter->name()) return &(*iter);
+      if(name==iter->name()) return iter->evaluate();
     }
-    return NULL;
+    return 0;
   };
   //produce a syntax tree
-  void parse(string definition){
-    root=__parse(definition,this);
-  };
-  //destructor
-  virtual ~Function(){
-    delete root;
-  };
-  //evaluate function
-  virtual double evaluate() const{
-    return root->evaluate();
+  Expression* parse(){
+    string def=this->definition;
+    return __parse(def,this);
   };
 };
 
@@ -291,7 +274,8 @@ Expression * makeExpr(string op,vector<Expression *> & idlist){
     for(int i=0;i<ptr->variablenum();i++){
       ptr->setvalue(i,idlist[i]);
     }
-    return new ID(ptr);
+    Expression * tree=ptr->parse();
+    return tree;
   }
 }
 
@@ -319,6 +303,7 @@ Expression * parseId(string & strp,Function * fptr) {
   if(fptr==NULL && findfunc(id)!=-1) fptr=functionlist[findfunc(id)];
   while(strp.substr(0,1)!=")"){
     idlist.push_back(__parse(strp,fptr));
+    skipSpace(strp);
   }
   skipSpace(strp);
   if(strp.substr(0,1)==")"){
@@ -340,7 +325,7 @@ Expression * __parse(string & strp,Function * fptr){
   }
   else{
     if(is_number(id)) return new NumExpression(stod(id));
-    else if(fptr->check_exist(id)) return new ID(fptr->ReturnVariablePtr(id));
+    else if(fptr->check_exist(id)) return new NumExpression(fptr->ReturnVariable(id));
     else{
       cerr<<"invalid id"<<endl;
       exit(0);
@@ -415,7 +400,7 @@ void parse_define(string &line){
   for(string token=gettoken(format);token!=")";token=gettoken(format)){
     func->add_variables(token);
   }
-  func->parse(definition);
+  func->setdefinition(definition);
   functionlist.push_back(func);
 }
 
