@@ -1,4 +1,4 @@
-dedup: dedup.o
-	g++ -o dedup dedup.o
-dedup.o: dedup.cpp 
-	g++ -pedantic -O3 -ggdb --std=gnu++11 -Wall -Werror dedup.cpp -c dedup.cpp
+expr: expr.o
+	g++ -o expr expr.o
+expr.o: expr.cpp 
+	g++ -pedantic -ggdb --std=gnu++11 -Wall -Werror dedup.cpp -c dedup.cpp
