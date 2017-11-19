@@ -9,6 +9,7 @@
 #include <fstream>
 #include "global.h"
 #include "numint.h"
+#include "mcint.h"
 
 using namespace std;
 
@@ -37,7 +38,10 @@ int main(int argc, char** argv) {
       cout<<temp<<" = "<<parse_evaluate(line)<<endl;
     }
     else if(command=="numint"){
-      cout<<"The integration is "<<parse_numint(line)<<endl;
+      cout<<"The rectagular integration is "<<parse_numint(line)<<endl;
+    }
+    else if(command=="mcint"){
+      cout<<"The Monte Carlo Integration is "<<parse_mcint(line)<<endl;
     }
     else{
       cerr<<"no such command"<<endl;
