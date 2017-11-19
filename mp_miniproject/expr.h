@@ -432,15 +432,4 @@ void parse_evaluate(string &line){
   delete ptr;
 }
 
-//judge define command and evaluate command. If begin with define, return true; if begin with evaluate, return flsese,else report error.
-bool is_define(string &line){
-  string str=gettoken(line);
-  if(str=="define") return true;
-  else if(str=="evaluate") return false;
-  else{
-    cerr<<"line format is wrong"<<endl;
-    exit(0);
-  }
-}
-
 #endif

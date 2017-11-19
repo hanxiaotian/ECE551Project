@@ -274,6 +274,9 @@ Expression * makeExpr(string op,vector<Expression *> & idlist){
     for(int i=0;i<ptr->variablenum();i++){
       ptr->setvalue(i,idlist[i]);
     }
+    for(auto iter=idlist.begin();iter!=idlist.end();iter++){
+      delete *iter;
+    }
     Expression * tree=ptr->parse();
     return tree;
   }
@@ -349,7 +352,7 @@ bool is_number(string str){
 
 //return first token
 string gettoken(string & line){
-  string str="+-*/%() ";
+  string str="+*/%() ";
   string returnstr;
   skipSpace(line);
   if(str.find(*line.begin())!=string::npos){
@@ -358,7 +361,7 @@ string gettoken(string & line){
     return returnstr;
   }
   else{
-    while(str.find(*line.begin())==string::npos){
+    while(str.find(*line.begin())==string::npos && line.begin()!=line.end()){
       returnstr=returnstr+*line.begin();
       line=line.substr(1);
     }
@@ -405,27 +408,16 @@ void parse_define(string &line){
 }
 
 //parsing evaluate command line
-void parse_evaluate(string &line){
+double parse_evaluate(string &line){
   skipSpace(line);
-  cout<<line;
   if(line.empty()){
     cerr<<"wrong command line"<<endl;
     exit(0);
   }
   Expression * ptr=__parse(line);
-  cout<<" = "<<ptr->evaluate()<<endl;
+  double result=ptr->evaluate();
   delete ptr;
-}
-
-//judge define command and evaluate command. If begin with define, return true; if begin with evaluate, return flsese,else report error.
-bool is_define(string &line){
-  string str=gettoken(line);
-  if(str=="define") return true;
-  else if(str=="evaluate") return false;
-  else{
-    cerr<<"line format is wrong"<<endl;
-    exit(0);
-  }
+  return result;
 }
 
 #endif
