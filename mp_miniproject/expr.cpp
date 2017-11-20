@@ -10,6 +10,7 @@
 #include "global.h"
 #include "numint.h"
 #include "mcint.h"
+#include "gradas.h"
 
 using namespace std;
 
@@ -42,6 +43,9 @@ int main(int argc, char** argv) {
     }
     else if(command=="mcint"){
       cout<<"The Monte Carlo Integration is "<<parse_mcint(line)<<endl;
+    }
+    else if(command=="gradas"){
+      cout<<"The Gradient Ascent is "<<parse_gradas(line)<<endl;
     }
     else{
       cerr<<"no such command"<<endl;

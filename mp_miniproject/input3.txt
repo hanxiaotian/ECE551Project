@@ -1,0 +1,2 @@
+define (f x) = (* x x)
+gradas f 0.01 0.001 -0.5 100
