@@ -262,6 +262,7 @@ class Function{
 
 
 //one of the syntax tree parsing function
+//based on the op, either make an expression or make a function tree
 Expression * makeExpr(string op,vector<Expression *> & idlist){
   if(op=="+") return new PlusExpression(idlist[0],idlist[1]);
   else if(op== "-") return new MinusExpression(idlist[0],idlist[1]);
@@ -274,15 +275,15 @@ Expression * makeExpr(string op,vector<Expression *> & idlist){
   else if(op=="pow") return new Pow(idlist[0],idlist[1]);
   else if(op=="sqrt") return new Sqrt(idlist[0]);
   else{
-    Function * ptr=functionlist[findfunc(op)];
-    for(int i=0;i<ptr->variablenum();i++){
+    Function * ptr=functionlist[findfunc(op)];   //if op is function, find it in functionlist
+    for(int i=0;i<ptr->variablenum();i++){       //then set its variable values
       ptr->setvalue(i,idlist[i]);
     }
-    for(auto iter=idlist.begin();iter!=idlist.end();iter++){
+    for(auto iter=idlist.begin();iter!=idlist.end();iter++){  //delete tree node we formed before 
       delete *iter;
     }
-    Expression * tree=ptr->parse();
-    return tree;
+    Expression * tree=ptr->parse();              //parse this function
+    return tree;                                 //return the tree we formed 
   }
 }
 
@@ -294,47 +295,47 @@ bool isValidId(string id) {
   if(findfunc(id)!=-1) return true;  //if id in functionlist, it is still valid
   else if(id.size()==1 && str1.find(id)!=string::npos) return true;
   else if(id.size()==3 && str2.find(id)!=string::npos) return true;
-  else if(id.size()==4 && str2==id) return true;
+  else if(id.size()==4 && str3==id) return true;
   else return false;
 }
 
 //next two function can parse a string into expression syntax tree
-Expression * parseId(string & strp,Function * fptr) {
+Expression * parseId(string & strp,Function * fptr) {     //this function parse expression inside "(" ")"
   skipSpace(strp);
   string id=gettoken(strp);
   if(!isValidId(id)){
     std::cerr << "Invalid id: "<< id<< "\n";
-    return NULL;
+    exit(0);
   }
-  vector<Expression *> idlist;
-  if(fptr==NULL && findfunc(id)!=-1) fptr=functionlist[findfunc(id)];
-  while(strp.substr(0,1)!=")"){
+  vector<Expression *> idlist;  //this vector is used to store num tree or variables behind operator or function 
+  if(fptr==NULL && findfunc(id)!=-1) fptr=functionlist[findfunc(id)]; //if second argument is NULL, this will set 
+  while(strp.substr(0,1)!=")"){                                       //it point to function to parse evaluate
     idlist.push_back(__parse(strp,fptr));
     skipSpace(strp);
   }
   skipSpace(strp);
-  if(strp.substr(0,1)==")"){
+  if(strp.substr(0,1)==")"){      //when encounter ")", make all things in list together to form a tree
     gettoken(strp);
     return makeExpr(id,idlist);
   }
   std::cerr <<"Expected ) but found " << strp << "\n";
   return NULL;
 }
-//the main interface of series of parsing function, which takes to arguments, one is definition string, the other is function pointer which first parameter belongs to
+/*the main interface of series of parsing function, which takes to arguments, one is definition string, the other is function pointer which first parameter belongs to. The second argument is crucial, if this funtion is called by a function class, then this argument is this pointer to that object and all the other variable can refer to this function's variable list. If this funtion is called out of class, at the beginning, this argument is default NULL, when it encounter other funtion, it will be set to point at that function, this will help evaluate command*/
 Expression * __parse(string & strp,Function * fptr){
   skipSpace(strp);
   if(strp.empty()){
-    std::cerr << "End of line found mid expression!\n";
-    return NULL;
+    std::cerr<<"invalid id"<<endl;
+    exit(0);
   }
   string id=gettoken(strp);
-  if(id=="("){
+  if(id=="("){                 //when encounter "(", begin to parse expression, until next ")"
     return parseId(strp,fptr);
   }
   else{
-    if(is_number(id)) return new NumExpression(stod(id));
-    else if(fptr->check_exist(id)) return new NumExpression(fptr->ReturnVariable(id));
-    else{
+    if(is_number(id)) return new NumExpression(stod(id)); //if id is number, return a num tree node
+    else if(fptr->check_exist(id)) return new NumExpression(fptr->ReturnVariable(id)); //if id is a valid variable
+    else{                                                 //name, make a num tree node with value of that variable
       cerr<<"invalid id"<<endl;
       exit(0);
     }
