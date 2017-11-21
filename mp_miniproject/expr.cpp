@@ -27,10 +27,10 @@ int main(int argc, char** argv) {
     cerr<<"wrong number of argument"<<endl;
     exit(0);
   }
-  string line;
+  string line;                            //store one line of command read from file
   ifstream fin(argv[1],ios::in);
   while(getline(fin, line)){
-    string command=gettoken(line);
+    string command=gettoken(line);      //get first token from line, which indicate what command should be excuted
     if(command=="define"){
       parse_define(line);
     }
@@ -47,13 +47,13 @@ int main(int argc, char** argv) {
     else if(command=="gradas"){
       cout<<"The Gradient Ascent is "<<parse_gradas(line)<<endl;
     }
-    else{
+    else{                             //if first token is not a valid command,there will be error and exit
       cerr<<"no such command"<<endl;
       exit(0);
     }
   }
   fin.close();
-  //delete functions
+  //delete functions which stored in a global vector
   for(auto iter=functionlist.begin();iter!=functionlist.end();iter++){
     delete *iter;
   }

@@ -11,8 +11,9 @@
 
 using namespace std;
 
-vector<Function*> functionlist;
+vector<Function*> functionlist; //declear global vector
 
+//virtual class which you write in assignment 81
 class Expression{
  public:
   virtual ~Expression(){};
@@ -30,18 +31,19 @@ void skipSpace(string & line);
 int findfunc(string name);
 
 //variable class, used to store variable in function
+//with a string member to store name of the variable and a double member to store value 
 class Variable: public Expression{
  private:
   string vname;
   double value;
  public:
  Variable(string n):vname(n),value(0){};
-  string name(){return vname;};
-  void setvalue(double val){
+  string name(){return vname;};          //return variable name
+  void setvalue(double val){             //set variable value
     value=val;
   };
   virtual ~Variable(){};
-  virtual double evaluate() const{
+  virtual double evaluate() const{       //calculate variable value in syntax tree
     return value;
   };
 };
@@ -58,7 +60,7 @@ class NumExpression: public Expression{
   };
 };
 
-//below are some build in computation class
+//below are some build in computation operator classes
 class PlusExpression: public Expression{
  private:
   Expression * lhs;
@@ -191,7 +193,8 @@ class Pow: public Expression{
   };
 };
 
-//function class
+
+//function class, store function name, variables list and function definition
 class Function{
  private:
   string funcname;
@@ -213,7 +216,7 @@ class Function{
   string returnname() const{
     return funcname;
   };
-  //check if name already in variables
+  //check if name already in function's variable list
   bool check_exist(string name){
     for(auto iter=variables.begin();iter<variables.end();iter++){
       if(name==iter->name()) return true;
@@ -222,26 +225,26 @@ class Function{
   }
   //add a variable to the function and set its initial value to 0
   void add_variables(string name){
-    if(check_exist(name)){
+    if(check_exist(name)){         //if variable has alreay exits, print a error message and exits
       cerr<<"repeat variables"<<endl;
       exit(0);
     }
     Variable v(name);
     variables.push_back(v);
   };
-  //return number of variables in this function
+  //return the number of variables in this function
   int variablenum(){return variables.size();};
-  //set variable value, the argument is the ith variable and its value
+  //set variable value, the argument is the ith variable(decided when function define) and its value
   void setvalue(int num, Expression * value){
-    if(num>variablenum()){
+    if(num>variablenum()){      //if the order of variable exceed number of variable in list, error and exit
       cerr<<"wrong number of variables"<<endl;
       exit(0);
     }
     variables[num].setvalue(value->evaluate());
   };
-  //return the value of variable with name 
+  //return the value of variable with sperific name 
   double ReturnVariable(string name){
-    if(!check_exist(name)){
+    if(!check_exist(name)){    //if no such name in variable list, error and exit
       cerr<<"variable name not mathc"<<endl;
       exit(0);
     }
@@ -250,12 +253,13 @@ class Function{
     }
     return 0;
   };
-  //produce a syntax tree
+  //produce a syntax tree using definition stored in function and return tree root node
   Expression* parse(){
     string def=this->definition;
     return __parse(def,this);
   };
 };
+
 
 //one of the syntax tree parsing function
 Expression * makeExpr(string op,vector<Expression *> & idlist){
@@ -284,10 +288,10 @@ Expression * makeExpr(string op,vector<Expression *> & idlist){
 
 //judge if id is a valid operator or function 
 bool isValidId(string id) {
-  string str1="+-*/%";
-  string str2="pow log sin cos";
-  string str3="sqrt";
-  if(findfunc(id)!=-1) return true;
+  string str1="+-*/%";             //single character valid symbol
+  string str2="pow log sin cos";   //three characters valid symbol
+  string str3="sqrt";              //four characters valid symbol
+  if(findfunc(id)!=-1) return true;  //if id in functionlist, it is still valid
   else if(id.size()==1 && str1.find(id)!=string::npos) return true;
   else if(id.size()==3 && str2.find(id)!=string::npos) return true;
   else if(id.size()==4 && str2==id) return true;
@@ -316,6 +320,7 @@ Expression * parseId(string & strp,Function * fptr) {
   std::cerr <<"Expected ) but found " << strp << "\n";
   return NULL;
 }
+//the main interface of series of parsing function, which takes to arguments, one is definition string, the other is function pointer which first parameter belongs to
 Expression * __parse(string & strp,Function * fptr){
   skipSpace(strp);
   if(strp.empty()){
@@ -350,19 +355,19 @@ bool is_number(string str){
   return true;
 }
 
-//return first token
+//return first token from line
 string gettoken(string & line){
-  string str="+*/%() ";
+  string str="+*/%() ";         //some basic operators "+*/%" and seperator "()" and " "
   string returnstr;
   skipSpace(line);
-  if(str.find(*line.begin())!=string::npos){
+  if(str.find(*line.begin())!=string::npos){ //when encounter above symbols, return directly
     returnstr=*line.begin();
     line=line.substr(1);
     return returnstr;
   }
   else{
-    while(str.find(*line.begin())==string::npos && line.begin()!=line.end()){
-      returnstr=returnstr+*line.begin();
+    while(str.find(*line.begin())==string::npos && line.begin()!=line.end()){ //read charator by character, until
+      returnstr=returnstr+*line.begin();                                     //encounter " " or "()", return
       line=line.substr(1);
     }
     skipSpace(line);
@@ -370,7 +375,7 @@ string gettoken(string & line){
   }
 }
 
-//remove white space at the two end of the string
+//remove white space at both ends of the string
 void skipSpace(string & line) {
   while(!line.empty() && isspace(*line.begin()))
     line.erase(line.begin());
@@ -378,7 +383,7 @@ void skipSpace(string & line) {
     line.erase(--((line.rbegin()).base()));
 }
 
-//find function in function list. if exists, return number else return -1
+//find function in function list. if exists, return its order in funtionlist. else return -1
 int findfunc(string name){
   for(size_t i=0;i<functionlist.size();i++){
     if(functionlist[i]->returnname()==name) return i;
@@ -388,35 +393,35 @@ int findfunc(string name){
 
 //parsing define command line
 void parse_define(string &line){
-  Function *func=new Function();
+  Function *func=new Function();    //create a new function object
   skipSpace(line);
-  cout<<"defined ";//output
-  if(line.empty()){
+  cout<<"defined ";                 //output
+  if(line.empty()){                 //if command is invalid, error and exit
     cerr<<"wrong command line"<<endl;
     exit(0);
   }
-  string format=line.substr(0, line.find("="));
-  string definition=line.substr(line.find("=")+1);
-  cout<<format<<endl;
-  gettoken(format); //jump through (
-  func->setname(gettoken(format));
+  string format=line.substr(0, line.find("="));   //split line into two part based on "=", the first
+  string definition=line.substr(line.find("=")+1);// part store format of the function and second part store
+  cout<<format<<endl;                             // function's definition
+  gettoken(format);                               //jump through "("
+  func->setname(gettoken(format));                //the first token behind "(" is function name
   for(string token=gettoken(format);token!=")";token=gettoken(format)){
-    func->add_variables(token);
+    func->add_variables(token);                   //the next several tokens are variable
   }
-  func->setdefinition(definition);
-  functionlist.push_back(func);
+  func->setdefinition(definition);                //store function definition 
+  functionlist.push_back(func);                   //add this function to funtionlist
 }
 
-//parsing evaluate command line
+//parsing evaluate command line and calculate the result of the function, return it
 double parse_evaluate(string &line){
   skipSpace(line);
-  if(line.empty()){
+  if(line.empty()){         //if invalid command, error and exit
     cerr<<"wrong command line"<<endl;
     exit(0);
   }
-  Expression * ptr=__parse(line);
-  double result=ptr->evaluate();
-  delete ptr;
+  Expression * tree=__parse(line);   //store tree returnd by __parse function 
+  double result=tree->evaluate();    //store value of the expression
+  delete tree;
   return result;
 }
 
