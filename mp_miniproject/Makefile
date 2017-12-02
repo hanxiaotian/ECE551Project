@@ -1,4 +1,4 @@
-expr: global.h expr2.h expr.cpp numint.h mcint.h gradas.h
-	g++ -o expr -std=gnu++11 -Wall -Werror -ggdb3 expr.cpp
+numerics: global.h expr.h expr.cpp numint.h mcint.h gradas.h
+	g++ -o numerics -std=gnu++11 -Wall -Werror -ggdb3 expr.cpp
 clean:
 	rm -f *~ expr
