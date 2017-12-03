@@ -26,6 +26,8 @@ Step1:
     input1.9.txt
       In this test file, I define a function fx=x, but the + operator only have one parameter, so the output is "wrong operand number"
     input1.10.txt													In this file, I wrote a sin with two parameters. The output is "wrong operand number"
+    input1.11.txt
+      In this file, I wrote a function with 0 parameters, so this kind of function could be used to represent constant.
 
 Step2:
   All of code to achieve step 2 is in numint.h file.
