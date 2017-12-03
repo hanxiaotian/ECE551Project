@@ -1,2 +1,0 @@
-define (f x y) = (+ x y)
-mcint f 10000 -1 1 -1 1
