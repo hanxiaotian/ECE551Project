@@ -1,0 +1,8 @@
+define (f x) = (+ x 1)
+define (g x) = (sin (f x))
+mcint g 100  -2 0
+mcint g 500 -2 0
+mcint g 1000 -2 0
+mcint g 1500 -2 0
+mcint g 5000 -2 0
+mcint g 10000 -2 0

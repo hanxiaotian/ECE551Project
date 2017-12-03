@@ -15,6 +15,10 @@ double parse_numint(string & line){
   vector<double> bounds;            //this vector used to store variable boundary read from command
   vector<double> loop;              //this vector used to store lower bound of every variable 
   for(int i=0;i<2*ptr->variablenum();i++){ //this loop read argument of variable boundary
+    if(line.empty()){
+      cerr<<"wrong boundary number"<<endl;
+      exit(0);
+    }
     string token=gettoken(line);
     if(i%2!=0) bounds.push_back(stod(token)-step/2);
     if(i%2==0){
@@ -22,7 +26,7 @@ double parse_numint(string & line){
       loop.push_back(*bounds.rbegin());
     }
   }
-  if(int(bounds.size())!=2*ptr->variablenum()){
+  if(!line.empty()){
     cerr<<"wrong boundary number"<<endl;
     exit(0);
   }

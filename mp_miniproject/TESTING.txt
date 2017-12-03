@@ -1,0 +1,78 @@
+Clarification:
+  expr.h expr.cpp global.h gradas.h numint.h and mcint.h are component of my code. Although I know it's bad to use using namespace std, in my code, I only use std library and do not have my own namespeca, for convenient, I just used "using namespace std" in this code. But if I do some big project, I would definitely not use using namespace.
+
+Step1:
+  All of the code to achieve step 1 is in expr.h file.
+  You can simply run ./test_step1.sh to see all of the test cases I have made. Or just run ./numerics input1.X.txt one by one.
+  Here I give detailed explanation about each input file:
+    input1.0.txt
+      In this test file, I wrote some basic and simple functions, including plus, minus, multiply, divide and mod operations and sin, cos, log, sqrt and pow operations. Finally, I ocmbined these together. All the results are the same as I calculated, so the result are correct.
+    input1.1.txt
+      In this test file, I first define a function f, then I define a funtion g, which include function f. Then in evaluation command, I use function f as parameter of function g and itself. The final result were correct, which indicate that my program can handle nested funtion perfectly.
+    input1.2.txt
+      In this test file, I use a wrong command, the final result is "no such command", so my code can handle wrong command input.
+    input1.3.txt
+      In this test file, I define a funtion, whose parameter in definition are not matched with its clarification, so my output is "invalid id", indicate that no such parameter in function f.
+    input1.4.txt
+      In this test file, I wrote a function with 3 parameters, but actually only use 2 of them (mathmatically reasonable). And the final result was correct.
+    input1.5.txt
+      In this test file, I define a funtion f, but I evaluate function g (not defined in function list). The output is "invalid id", which is correct since cannot find function g.
+    input1.6.txt
+      In this test file, I define a function with 3 parameters. But I evaluate it with 4 parameters. The output is "variable number error".
+    input1.7.txt
+      In this test file, I define a funtion f with 3 parameters.But I evaluate it with 2 parameters. The output is "variable number error".
+    input1.8.txt
+      In this test file, I define a function, but the definition format of this function was wrong. So the output is "invalid id".
+    input1.9.txt
+      In this test file, I define a function fx=x, but the + operator only have one parameter, so the output is "wrong operand number"
+    input1.10.txt													In this file, I wrote a sin with two parameters. The output is "wrong operand number"
+
+Step2:
+  All of code to achieve step 2 is in numint.h file.
+  You can simply run ./test_step2.sh to see all of the test cases I have made about this step. Or just run ./numerics input2.X.txt one by one.
+  Here I give detailed explanation about each input file:
+    input2.0.txt
+      In this test file, I simply define fx=x and gx=sinx, and integrate them with different step lenght and interval. The final result are very much approximate to accurate result.
+    input2.1.txt
+      In this test file, I define a function with two parameters, But it's even and the integration interval were symmmetry. So the final results should be approximate 0. And my output is correct.
+    input2.2.txt
+      In this test file, I first define function f, and then define function g which include funtion f in it. The interval of this function is sysmmetry, so the final ressult should be 0. When I use different step length, the smaller step length is, the more accurate output is.
+    input2.3.txt
+      In this test file, I define a funtion with two parameters, but I only give 3 parameters as interval boundary. So the output is "wrong boundary number".
+    input2.4.txt
+      In this test file, I define a function with two parameters, but I give five parameters as interval boundary. So the output is "wrong boundary number".
+    input2.5.txt
+      In this test file, I define a function with name f. But I calulate function g's integration, which was not defined before. So the output is "wrong function name".
+
+Step3:
+  All of code to achieve step 3 is in mcint.h file.
+  You can simply run ./test_step3.sh to see all of the test cases I have made about this step. Or just run ./numerics input3.X.txt one by one.
+  Since in this step, I use time() as ramdom generator's seed, every time, the test case will produce different results. Sometimes, the results may seems to be quite weard,but if you run it several times, you can get correct answer. As I learned, according to Large Number Theorem, the variation of results is propotional to 1/sqrt(N).
+  Here I give detailed explanation about each input file:
+    input3.0.txt
+      In this test file, I simply define fx=x and gx=sinx, and integrate them with different repeat numbers. The final result are very much approximate to accurate result. I also notice that when N become bigger, the final result is more likely to be accurate value.
+    input3.1.txt
+      In this test file, I define a function with two parameters, But it's even and the integration interval were symmmetry. So the final results should be approximate 0. And my output is correct.
+    input3.2.txt
+      In this test file, I first define function f, and then define function g which include funtion f in it. The interval of this function is sysmmetry, so the final ressult should be 0. When I use different N, the bigger N is, the output is more likely to be close to accurate value.
+    input3.3.txt
+      In this test file, I define a funtion with two parameters, but I only give 3 parameters as interval boundary. So the output is "wrong boundary number".
+    input3.4.txt
+      In this test file, I define a function with two parameters, but I give five parameters as interval boundary. So the output is "wrong boundary number".
+    input3.5.txt
+      In this test file, I define a function with name f. But I calulate function g's integration, which was not defined before. So the output is "wrong function name".
+
+Step4:
+  All of the code to achieve step4 is in gradas.h file.
+  You can simply run ./test_step4.sh to see all of the test cases I have made about this step. Or just run ./numerics input4.X.txt one by one.
+  Since step length of gradient is chosen by myself, I found it very tricky if step length is a little bit bigger than converge distance. Sometimes, even though converge distance is small enough, the output may not be more accurate if step lenght is not suit.
+  Here I give detailed explanation about each input file:
+    input4.0.txt
+      In this test file, I define a function fx=-x^2, and start from x=-0.5, gamma=0.01 converge distance=0.0001. In calculating gradient, the step I use is 0.01. The final result is x=-0.00489, which is quite close to 0 (accurate value).
+    input4.1.txt
+      In this test file, I define fx=sinx. start from x=1.8, I got the final result is 1.58 (which is exactly PI/2).
+    input4.2.txt
+      In this test file, I define fx=x, which has no extremem. So the final result shows not converge.
+    input4.3.txt
+      In this test file, I define a two parameters function f(x,y)= sinx+ siny and start from point (1,1). One of the extremem point of this function is (PI/2, PI/2). And the output is correct.
+						

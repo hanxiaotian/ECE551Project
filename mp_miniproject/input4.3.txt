@@ -1,0 +1,2 @@
+define (f x y) = (+ (sin x) (sin y))
+gradas f 0.01 0.0001 1 1 1000

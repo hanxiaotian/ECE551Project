@@ -45,7 +45,7 @@ int main(int argc, char** argv) {
       cout<<"The Monte Carlo Integration is "<<parse_mcint(line)<<endl;
     }
     else if(command=="gradas"){
-      cout<<"The Gradient Ascent is "<<parse_gradas(line)<<endl;
+      cout<<"The maximum Gradient point is ("<<parse_gradas(line)<<")"<<endl;
     }
     else{                             //if first token is not a valid command,there will be error and exit
       cerr<<"no such command"<<endl;
